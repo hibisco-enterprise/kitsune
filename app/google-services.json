@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126920529048",
+    "project_id": "kitsune-c175d",
+    "storage_bucket": "kitsune-c175d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126920529048:android:ee6dffee1e4ddd3ea12ced",
+        "android_client_info": {
+          "package_name": "com.hibisco.kitsune"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126920529048-01o48ficf0ql1p7gt3lfitq79r0ug1oa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3_XX0TrVAldQRSIJ4Jh5MSKzGfuk_rXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126920529048-01o48ficf0ql1p7gt3lfitq79r0ug1oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
