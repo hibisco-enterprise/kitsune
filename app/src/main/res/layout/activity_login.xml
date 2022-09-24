@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:fontFamily="arial"
+        android:fontFamily="@font/outfit_bold"
         android:text="Entre com sua conta como doador"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
