@@ -11,5 +11,8 @@ interface API {
     suspend fun getHospitals (): retrofit2.Response<ResponseBody>
 
     @POST("donator/login")
-    suspend fun login()
+    suspend fun login(
+        @Query("login") login: String,
+        @Query("password") password: String
+    )
 }

@@ -5,4 +5,11 @@ import com.hibisco.kitsune.feature.ui.base.KitsuneViewModel
 
 class LoginViewModel (private val loginRepository: LoginRepository): KitsuneViewModel(){
 
+    fun testHospitalEndPoint() {
+
+    }
+
+    fun login(email: String, password: String) {
+
+    }
 }
