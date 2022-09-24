@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".feature.ui.Login.View.LoginActivity"
+    android:padding="23dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/logo_gray"
+            android:textSize="20sp"
+            android:text="@string/app_name"/>
+        <TextView
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/seconday_purple"
+            android:textSize="14sp"
+            android:text="Esqueci minha senha"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:fontFamily="arial"
+        android:text="Entre com sua conta como doador"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
