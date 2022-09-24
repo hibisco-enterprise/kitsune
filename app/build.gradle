@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
-
-    viewBinding {
-        enabled true
+    buildFeatures {
+        viewBinding true
     }
+
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.hibisco.kitsune"
