@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/logo_gray"
             android:textSize="20sp"
-            android:text="@string/app_name"/>
+            android:text="kitsune"
+            android:fontFamily="@font/outfit_medium"/>
         <TextView
             android:layout_weight="1"
             android:textAlignment="textEnd"
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/seconday_purple"
             android:textSize="14sp"
+            android:fontFamily="@font/outfit_medium"
             android:text="Esqueci minha senha"/>
     </LinearLayout>
 
@@ -78,6 +80,17 @@
             android:hint="Digite sua senha"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:text="Entrar"
+        android:textSize="16sp"
+        android:fontFamily="@font/outfit_medium"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button"
+        android:layout_height="wrap_content"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
