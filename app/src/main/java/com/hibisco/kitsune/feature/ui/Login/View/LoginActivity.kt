@@ -7,10 +7,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
+import com.hibisco.kitsune.feature.ui.Login.ViewModel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

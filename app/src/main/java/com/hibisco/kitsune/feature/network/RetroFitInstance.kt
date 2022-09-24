@@ -1,9 +1,6 @@
 package com.hibisco.kitsune.feature.network
 
-import android.annotation.SuppressLint
-import android.text.TextUtils
 import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
