@@ -7,11 +7,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
-import com.hibisco.kitsune.feature.StartKoin
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity: AppCompatActivity(), LoginDelegate {
     private lateinit var auth: FirebaseAuth
@@ -29,8 +27,10 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
     }
 
     fun setActions() {
-        val email = binding.emailEt.text.toString()
-        val password = binding.passwordEt.text.toString()
+        // val email = binding.emailEt.text.toString()
+        // val password = binding.passwordEt.text.toString()
+        val email = "billy@live.com"
+        val password = "Senha@123"
 
         println(email + "" + password)
         binding.btnLogin.setOnClickListener{
@@ -49,7 +49,6 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
     override fun onStart() {
         super.onStart()
-        StartKoin.initKoin(this)
         val currentUser = auth.currentUser
     }
 
@@ -58,6 +57,6 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
     }
 
     override fun loginFailed() {
-        TODO("Not yet implemented")
+        Toast.makeText(baseContext, "Login deu ruim", Toast.LENGTH_LONG).show()
     }
 }

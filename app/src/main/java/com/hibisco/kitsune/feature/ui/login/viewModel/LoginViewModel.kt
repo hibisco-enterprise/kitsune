@@ -1,11 +1,10 @@
 package com.hibisco.kitsune.feature.ui.login.viewModel
 
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
+import android.content.Context
 import com.hibisco.kitsune.feature.network.RetroFitInstance
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.network.model.Hospital
-import com.hibisco.kitsune.feature.stateFlow.StateFlow
+import com.hibisco.kitsune.feature.network.request.LoginRequest
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.base.KitsuneViewModel
 import retrofit2.Call
@@ -36,10 +35,12 @@ class LoginViewModel(delegate: LoginDelegate): KitsuneViewModel() {
     }
 
     fun login(email: String, password: String) {
-        retrofit.login(email, password).enqueue(
+        retrofit.login(LoginRequest(email, password)).enqueue(
             object: Callback<Donator> {
                 override fun onResponse(call: Call<Donator>, response: Response<Donator>) {
-                    response.body()?.let { delegate::loginSuccessful }
+                    response.body()?.let {
+                        delegate::loginSuccessful
+                    }
                 }
 
                 override fun onFailure(call: Call<Donator>, t: Throwable) {
