@@ -39,7 +39,7 @@ class LoginViewModel(delegate: LoginDelegate): KitsuneViewModel() {
             object: Callback<Donator> {
                 override fun onResponse(call: Call<Donator>, response: Response<Donator>) {
                     response.body()?.let {
-                        delegate::loginSuccessful
+                        delegate.loginSuccessful(response.body()!!)
                     }
                 }
 
