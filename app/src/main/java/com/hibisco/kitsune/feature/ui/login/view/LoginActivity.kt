@@ -26,21 +26,20 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
         setActions()
     }
 
-    fun setActions() {
-        // val email = binding.emailEt.text.toString()
-        // val password = binding.passwordEt.text.toString()
-        val email = "billy@live.com"
-        val password = "Senha@123"
-
-        println(email + "" + password)
+    private fun setActions() {
         binding.btnLogin.setOnClickListener{
+            val email = binding.emailEt.text.toString()
+            val password = binding.passwordEt.text.toString()
+
+            println(email + "" + password)
+
             if (checkFields(email, password)) {
                 viewModel.login(email, password)
             }
         }
     }
 
-    fun checkFields(login: String?, password: String?): Boolean{
+    private fun checkFields(login: String?, password: String?): Boolean{
         if (login == null || login == "" || password == null || password == "") {
             return false
         }
