@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
-            android:name=".feature.ui.Login.View.LoginActivity"
+            android:name=".feature.ui.login.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

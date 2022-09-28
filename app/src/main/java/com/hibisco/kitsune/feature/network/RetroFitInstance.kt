@@ -8,9 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 
 object RetroFitInstance {
+    private const val baseUrl = "http://10.0.2.2:8080/"
+    // private const val baseUrl = "http://10.0.2.2:8080/"
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    fun getRetrofit(baseUrl: String): API {
+    fun getRetrofit(): API {
         val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
