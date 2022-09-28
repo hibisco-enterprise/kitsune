@@ -49,19 +49,21 @@
         android:textColor="@color/black"
         android:fontFamily="@font/outfit_semi_bold"
         />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailET"
-            android:textColor="@color/logo_gray"
-            android:background="@color/white"
-            android:textColorHint="@color/logo_gray"
 
+        <EditText
+            android:id="@+id/email_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite seu email" />
+            android:background="@color/white"
+
+            android:hint="Digite seu email"
+            android:textColor="@color/logo_gray"
+            android:textColorHint="@color/logo_gray" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -78,8 +80,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordET"
+        <EditText
+            android:id="@+id/password_et"
             android:background="@color/white"
             android:textColor="@color/logo_gray"
             android:textColorHint="@color/logo_gray"
