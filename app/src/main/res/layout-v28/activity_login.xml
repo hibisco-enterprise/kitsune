@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/logo_gray"
             android:textSize="20sp"
+            android:lineHeight="25sp"
             android:text="kitsune"
             android:fontFamily="@font/outfit_medium"/>
         <TextView
@@ -47,24 +48,23 @@
         android:layout_height="wrap_content"
         android:text="Email"
         android:textSize="14sp"
-        android:textColor="@color/black"
+        android:textColor="@color/black_title"
         android:fontFamily="@font/outfit_semi_bold"
         />
 
-        <EditText
-            android:id="@+id/email_et"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/custom_textfield"
-            android:paddingStart="12dp"
+    <EditText
+        android:id="@+id/email_et"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_textfield"
+        android:paddingStart="12dp"
 
-            android:hint="Digite seu email..."
-            android:inputType="textEmailAddress"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/logo_gray"
-            android:fontFamily="@font/outfit_regular" />
+        android:hint="Digite seu email..."
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/outfit_regular" />
 
     <TextView
         android:layout_marginTop="24dp"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:text="Senha"
         android:textSize="14sp"
-        android:textColor="@color/black"
+        android:textColor="@color/black_title"
         android:fontFamily="@font/outfit_semi_bold"
         />
 
@@ -88,7 +88,6 @@
         android:inputType="textPassword"
         android:textSize="14sp"
         android:textColor="@color/black"
-        android:textColorHint="@color/logo_gray"
         android:fontFamily="@font/outfit_regular" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -116,7 +115,7 @@
             android:fontFamily="@font/outfit_light"
             android:text="Não possui uma conta?"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/black_title"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/criar_tv" />
 
@@ -133,5 +132,6 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

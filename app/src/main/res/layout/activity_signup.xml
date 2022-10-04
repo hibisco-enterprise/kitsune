@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:backgroundTint="@color/white"
+    tools:context=".feature.ui.signup.view.SignupActivity"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_title"
+        android:textSize="20sp"
+        android:text="kitsune"
+        android:fontFamily="@font/outfit_medium"/>
+
+    <TextView
+        android:layout_marginTop="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_title"
+        android:textSize="24sp"
+        android:fontFamily="@font/outfit_semi_bold"
+        android:text="Cadastre a sua conta de doador"/>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/signup_pgb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="1"
+        android:max="100"
+        app:trackCornerRadius="4dp"
+        app:indicatorColor="@color/secondary_red"
+        android:layout_marginTop="4dp"/>
+
+    <LinearLayout
+        android:id="@+id/step1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="14sp"
+            android:textColor="@color/gray_title"
+            android:fontFamily="@font/outfit_semi_bold"
+            />
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_textfield"
+            android:paddingStart="12dp"
+
+            android:hint="Digite seu email..."
+            android:inputType="textEmailAddress"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/outfit_regular" />
+
+        <TextView
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Senha"
+            android:textSize="14sp"
+            android:textColor="@color/gray_title"
+            android:fontFamily="@font/outfit_semi_bold"
+            />
+
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_textfield"
+            android:paddingStart="12dp"
+
+            android:hint="Digite sua senha..."
+            android:inputType="textPassword"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/outfit_regular" />
+
+        <TextView
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirme sua senha"
+            android:textSize="14sp"
+            android:textColor="@color/gray_title"
+            android:fontFamily="@font/outfit_semi_bold"
+            />
+
+        <EditText
+            android:id="@+id/confirm_password_et"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_textfield"
+            android:paddingStart="12dp"
+
+            android:hint="Digite sua senha novamente..."
+            android:inputType="textPassword"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/outfit_regular" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_step1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_button"
+
+            android:text="Próximo"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/outfit_medium"
+            android:textAllCaps="false"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/outfit_light"
+                android:text="Já possui uma conta?"
+                android:textAlignment="center"
+                android:textColor="@color/black_title"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/entrar_tv" />
+
+            <TextView
+                android:id="@+id/entrar_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:fontFamily="@font/outfit_semi_bold"
+                android:text="Entre"
+                android:textAlignment="center"
+                android:textColor="@color/secondary_red"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/step2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:textSize="14sp"
+                android:textColor="@color/gray_title"
+                android:fontFamily="@font/outfit_semi_bold"
+                />
+
+            <EditText
+                android:id="@+id/nome_et"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_textfield"
+                android:paddingStart="12dp"
+
+                android:hint="Digite seu nome..."
+                android:inputType="text"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/outfit_regular" />
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CPF"
+                android:textSize="14sp"
+                android:textColor="@color/gray_title"
+                android:fontFamily="@font/outfit_semi_bold"
+                />
+
+            <EditText
+                android:id="@+id/cpf_et"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_textfield"
+                android:paddingStart="12dp"
+
+                android:hint="Digite seu CPF..."
+                android:inputType="text"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/outfit_regular" />
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefone"
+                android:textSize="14sp"
+                android:textColor="@color/gray_title"
+                android:fontFamily="@font/outfit_semi_bold"
+                />
+
+            <EditText
+                android:id="@+id/telefone_et"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_textfield"
+                android:paddingStart="12dp"
+
+                android:hint="Digite seu telefone..."
+                android:inputType="phone"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/outfit_regular" />
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo Sanguíneo"
+                android:textSize="14sp"
+                android:textColor="@color/gray_title"
+                android:fontFamily="@font/outfit_semi_bold"
+                />
+
+            <Spinner
+                android:id="@+id/bloodtype_spinner"
+                android:layout_width="64dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_textfield"
+                android:paddingStart="12dp"
+                android:dropDownSelector="@drawable/ic_launcher_foreground"
+
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/outfit_regular" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_step2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom_button"
+
+                android:text="Próximo"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/outfit_medium"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/step3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:paddingRight="8dp">
+
+                        <TextView
+                            android:layout_marginTop="24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CEP"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_title"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            />
+
+                        <EditText
+                            android:id="@+id/cep_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/custom_textfield"
+                            android:paddingStart="12dp"
+
+                            android:hint="Digite seu CEP..."
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/outfit_regular" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_marginTop="24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="UF"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_title"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            />
+
+                        <Spinner
+                            android:id="@+id/uf_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/custom_textfield"
+                            android:paddingStart="12dp"
+
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/outfit_regular" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cidade"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_title"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    />
+
+                <Spinner
+                    android:id="@+id/cidade_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/custom_textfield"
+                    android:paddingStart="12dp"
+
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/outfit_regular" />
+
+                <TextView
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bairro"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_title"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    />
+
+                <EditText
+                    android:id="@+id/bairro_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/custom_textfield"
+                    android:paddingStart="12dp"
+
+                    android:hint="Digite seu bairro..."
+                    android:inputType="phone"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/outfit_regular" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:paddingRight="8dp">
+
+                        <TextView
+                            android:layout_marginTop="24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Logradouro"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_title"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            />
+
+                        <EditText
+                            android:id="@+id/logradouro_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/custom_textfield"
+                            android:paddingStart="12dp"
+
+                            android:hint="Digite seu logradouro..."
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/outfit_regular" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_marginTop="24dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nº"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_title"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            />
+
+                        <EditText
+                            android:id="@+id/numero_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/custom_textfield"
+                            android:paddingStart="12dp"
+
+                            android:hint="XXX"
+                            android:maxLength="5"
+                            android:inputType="number"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/outfit_regular" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_step3"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_button"
+
+                    android:text="Concluir"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/outfit_medium"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
