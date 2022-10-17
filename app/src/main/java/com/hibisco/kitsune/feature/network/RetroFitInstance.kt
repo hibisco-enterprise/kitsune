@@ -9,10 +9,12 @@ import java.lang.reflect.Type
 
 object RetroFitInstance {
     private const val baseUrl = "http://10.0.2.2:8080/"
+    private const val baseUrlExternalIBGE = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/"
+    private const val baseUrlExternalViaCep = "https://viacep.com.br/ws/"
     // private const val baseUrl = "http://10.0.2.2:8080/"
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    fun getRetrofit(): API {
+    fun getRetrofitKitsune(): API {
         val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -22,6 +24,32 @@ object RetroFitInstance {
             .build()
 
         return retrofit.create(API::class.java)
+    }
+
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+    fun getRetrofitIBGE(): APIIBGE {
+        val gson = GsonBuilder().setLenient().create()
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrlExternalIBGE)
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .build()
+
+        return retrofit.create(APIIBGE::class.java)
+    }
+
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+    fun getRetrofitViaCep(): APIViaCep {
+        val gson = GsonBuilder().setLenient().create()
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrlExternalIBGE)
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .build()
+
+        return retrofit.create(APIViaCep::class.java)
     }
 
     class NullOnEmptyConverterFactory : Converter.Factory() {

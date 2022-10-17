@@ -1,6 +1,5 @@
 package com.hibisco.kitsune.feature.ui.login.viewModel
 
-import android.content.Context
 import com.hibisco.kitsune.feature.network.RetroFitInstance
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.network.model.Hospital
@@ -12,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginViewModel(delegate: LoginDelegate): KitsuneViewModel() {
-    private val retrofit = RetroFitInstance.getRetrofit()
+    private val retrofit = RetroFitInstance.getRetrofitKitsune()
     val delegate: LoginDelegate = delegate
 
     fun testHospitalEndPoint() {

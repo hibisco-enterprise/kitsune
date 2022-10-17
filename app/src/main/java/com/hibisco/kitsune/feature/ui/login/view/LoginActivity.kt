@@ -31,8 +31,6 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
 
-            println(email + "" + password)
-
             if (checkFields(email, password)) {
                 viewModel.login(email, password)
             }
