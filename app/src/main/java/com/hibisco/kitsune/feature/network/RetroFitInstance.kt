@@ -43,7 +43,7 @@ object RetroFitInstance {
     fun getRetrofitViaCep(): APIViaCep {
         val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrlExternalIBGE)
+            .baseUrl(baseUrlExternalViaCep)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addConverterFactory(NullOnEmptyConverterFactory())

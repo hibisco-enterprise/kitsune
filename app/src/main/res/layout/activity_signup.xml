@@ -62,6 +62,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/custom_textfield"
             android:paddingStart="12dp"
+            android:paddingEnd="12dp"
 
             android:hint="Digite seu email..."
             android:inputType="textEmailAddress"
@@ -86,6 +87,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/custom_textfield"
             android:paddingStart="12dp"
+            android:paddingEnd="12dp"
 
             android:hint="Digite sua senha..."
             android:inputType="textPassword"
@@ -110,6 +112,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/custom_textfield"
             android:paddingStart="12dp"
+            android:paddingEnd="12dp"
 
             android:hint="Digite sua senha novamente..."
             android:inputType="textPassword"
@@ -185,6 +188,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/custom_textfield"
                 android:paddingStart="12dp"
+                android:paddingEnd="12dp"
 
                 android:hint="Digite seu nome..."
                 android:inputType="text"
@@ -209,6 +213,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/custom_textfield"
                 android:paddingStart="12dp"
+                android:paddingEnd="12dp"
 
                 android:hint="Digite seu CPF..."
                 android:inputType="text"
@@ -233,6 +238,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/custom_textfield"
                 android:paddingStart="12dp"
+                android:paddingEnd="12dp"
 
                 android:hint="Digite seu telefone..."
                 android:inputType="phone"
@@ -257,6 +263,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/custom_textfield"
                 android:paddingStart="12dp"
+                android:paddingEnd="12dp"
                 android:dropDownSelector="@drawable/ic_launcher_foreground"
 
                 android:textSize="14sp"
@@ -314,6 +321,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/custom_textfield"
                             android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
 
                             android:hint="Digite seu CEP..."
                             android:inputType="text"
@@ -343,6 +351,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/custom_textfield"
                             android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
 
                             android:textSize="14sp"
                             android:textColor="@color/black"
@@ -367,6 +376,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_textfield"
                     android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
 
                     android:textSize="14sp"
                     android:textColor="@color/black"
@@ -389,6 +399,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_textfield"
                     android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
 
                     android:hint="Digite seu bairro..."
                     android:inputType="phone"
@@ -425,6 +436,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/custom_textfield"
                             android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
 
                             android:hint="Digite seu logradouro..."
                             android:inputType="text"
@@ -454,6 +466,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/custom_textfield"
                             android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
 
                             android:hint="XXX"
                             android:maxLength="5"
