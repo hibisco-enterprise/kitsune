@@ -151,6 +151,10 @@ class SignupActivity : AppCompatActivity() {
             }
         }
 
+        binding.tvKitsune.setOnClickListener {
+            finish()
+        }
+
         binding.signupPgb.setProgress(1, false)
         binding.step1.visibility = View.GONE
         binding.step2.visibility = View.VISIBLE
@@ -176,7 +180,7 @@ class SignupActivity : AppCompatActivity() {
         }
         binding.btnStep3.setOnClickListener {
             if (validateThirdStep()){
-                println("PENIS")
+                println("btnStep3")
             }
         }
 
