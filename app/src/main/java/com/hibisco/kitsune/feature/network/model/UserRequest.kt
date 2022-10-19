@@ -5,5 +5,5 @@ data class UserRequest(
     val documentNumber: String,
     val password: String,
     val phone: String,
-    val address: Address
+    val address: AddressRequest
 )

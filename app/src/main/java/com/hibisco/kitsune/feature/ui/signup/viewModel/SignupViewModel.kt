@@ -1,11 +1,15 @@
 package com.hibisco.kitsune.feature.ui.signup.viewModel
 
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
+import com.hibisco.kitsune.R
 import com.hibisco.kitsune.feature.network.RetroFitInstance
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.network.model.DonatorRequest
 import com.hibisco.kitsune.feature.network.request.LoginRequest
 import com.hibisco.kitsune.feature.ui.base.KitsuneViewModel
 import com.hibisco.kitsune.feature.ui.signup.delegate.SignupDelegate
+import com.hibisco.kitsune.feature.ui.signup.view.SignupActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +23,9 @@ class SignupViewModel(delegate: SignupDelegate): KitsuneViewModel() {
         retrofit.register(donator).enqueue(
             object: Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    delegate.registerSuccessful()
+                    if (response.code() == 201){
+                        delegate.registerSuccessful()
+                    }
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

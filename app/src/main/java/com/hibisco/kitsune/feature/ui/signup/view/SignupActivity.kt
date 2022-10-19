@@ -12,7 +12,9 @@ import androidx.core.widget.addTextChangedListener
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivitySignupBinding
 import com.hibisco.kitsune.feature.network.RetroFitInstance
+import com.hibisco.kitsune.feature.network.model.AddressRequest
 import com.hibisco.kitsune.feature.network.model.DonatorRequest
+import com.hibisco.kitsune.feature.network.model.UserRequest
 import com.hibisco.kitsune.feature.network.model.ibge.Estado
 import com.hibisco.kitsune.feature.network.model.ibge.Municipio
 import com.hibisco.kitsune.feature.network.response.ViaCepResponse
@@ -164,8 +166,8 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
         }
 
         binding.signupPgb.setProgress(1, false)
-        binding.step1.visibility = View.GONE
-        binding.step2.visibility = View.VISIBLE
+        binding.step1.visibility = View.VISIBLE
+        binding.step2.visibility = View.GONE
         binding.step3.visibility = View.GONE
 
         binding.passwordEt.addTextChangedListener {
@@ -188,8 +190,25 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
         }
         binding.btnStep3.setOnClickListener {
             if (validateThirdStep()){
-                // viewModel.signup(DonatorRequest(bloo))
-                println("btnStep3")
+                 viewModel.signup(
+                     DonatorRequest(
+                         binding.bloodtypeSpinner.selectedItem.toString(),
+                         UserRequest(
+                             binding.emailEt.text.toString(),
+                             binding.cpfEt.text.toString(),
+                             binding.passwordEt.text.toString(),
+                             binding.telefoneEt.text.toString(),
+                             AddressRequest(
+                                 binding.logradouroEt.text.toString(),
+                                 binding.bairroEt.text.toString(),
+                                 binding.cidadeSpinner.selectedItem.toString(),
+                                 binding.ufSpinner.selectedItem.toString(),
+                                 binding.cepEt.text.toString(),
+                                 binding.numeroEt.text.toString().toInt()
+                             )
+                         )
+                     )
+                 )
             }
         }
 
