@@ -12,10 +12,13 @@ import androidx.core.widget.addTextChangedListener
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivitySignupBinding
 import com.hibisco.kitsune.feature.network.RetroFitInstance
+import com.hibisco.kitsune.feature.network.model.DonatorRequest
 import com.hibisco.kitsune.feature.network.model.ibge.Estado
 import com.hibisco.kitsune.feature.network.model.ibge.Municipio
 import com.hibisco.kitsune.feature.network.response.ViaCepResponse
+import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
 import com.hibisco.kitsune.feature.ui.signup.delegate.SignupDelegate
+import com.hibisco.kitsune.feature.ui.signup.viewModel.SignupViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +28,7 @@ import java.util.*
 
 class SignupActivity : AppCompatActivity(), SignupDelegate {
     private lateinit var binding: ActivitySignupBinding
+    lateinit var viewModel: SignupViewModel
 
     val retrofitIBGE = RetroFitInstance.getRetrofitIBGE()
     val retrofitViaCEP = RetroFitInstance.getRetrofitViaCep()
@@ -184,6 +188,7 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
         }
         binding.btnStep3.setOnClickListener {
             if (validateThirdStep()){
+                // viewModel.signup(DonatorRequest(bloo))
                 println("btnStep3")
             }
         }
