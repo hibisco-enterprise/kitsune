@@ -43,6 +43,8 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = SignupViewModel(this)
+
         // Spinner element
         val spinnerBloodType = binding.bloodtypeSpinner
 
