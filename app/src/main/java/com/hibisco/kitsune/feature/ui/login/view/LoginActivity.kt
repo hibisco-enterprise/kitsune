@@ -1,5 +1,6 @@
 package com.hibisco.kitsune.feature.ui.login.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
+import com.hibisco.kitsune.feature.ui.signup.view.SignupActivity
 
 class LoginActivity: AppCompatActivity(), LoginDelegate {
     private lateinit var auth: FirebaseAuth
@@ -34,6 +36,11 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             if (checkFields(email, password)) {
                 viewModel.login(email, password)
             }
+        }
+
+        binding.tvCreateAccount.setOnClickListener{
+            val signup = Intent(this, SignupActivity::class.java)
+            startActivity(signup)
         }
     }
 

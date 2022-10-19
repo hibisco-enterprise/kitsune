@@ -117,10 +117,10 @@
             android:textAlignment="center"
             android:textColor="@color/black_title"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/criar_tv" />
+            app:layout_constraintBottom_toTopOf="@+id/tvCreateAccount" />
 
         <TextView
-            android:id="@+id/criar_tv"
+            android:id="@+id/tvCreateAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
