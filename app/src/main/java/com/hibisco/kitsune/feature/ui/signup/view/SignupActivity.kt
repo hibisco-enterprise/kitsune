@@ -197,6 +197,7 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
                          binding.bloodtypeSpinner.selectedItem.toString(),
                          UserRequest(
                              binding.emailEt.text.toString(),
+                             binding.nomeEt.text.toString(),
                              binding.cpfEt.text.toString(),
                              binding.passwordEt.text.toString(),
                              binding.telefoneEt.text.toString(),
@@ -414,11 +415,16 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
         }
     }
 
+
     override fun registerSuccessful() {
-        Toast.makeText(baseContext, "Conta criada com sucesso", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Conta criada com sucesso", Toast.LENGTH_LONG).show()
     }
 
     override fun registerFailed(error: String) {
-        Toast.makeText(baseContext, error, Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+    }
+
+    override fun errorOnRegister(error: String) {
+        Toast.makeText(applicationContext, "Erro: $error na criação da conta", Toast.LENGTH_LONG).show()
     }
 }

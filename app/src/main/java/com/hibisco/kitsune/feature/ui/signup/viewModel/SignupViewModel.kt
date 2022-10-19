@@ -23,12 +23,19 @@ class SignupViewModel(delegate: SignupDelegate): KitsuneViewModel() {
         retrofit.register(donator).enqueue(
             object: Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
+                    println(response)
                     if (response.code() == 201){
+                        println(response)
+                        println("Criado")
                         delegate.registerSuccessful()
+                    } else {
+                        delegate.errorOnRegister(response.code().toString())
                     }
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
+
+                    println(t.message.toString())
                     delegate.registerFailed(t.message.toString())
                 }
 
