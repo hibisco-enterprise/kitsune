@@ -1,9 +1,12 @@
 package com.hibisco.kitsune.feature.ui.signup.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.hibisco.kitsune.R
@@ -12,6 +15,7 @@ import com.hibisco.kitsune.feature.network.RetroFitInstance
 import com.hibisco.kitsune.feature.network.model.ibge.Estado
 import com.hibisco.kitsune.feature.network.model.ibge.Municipio
 import com.hibisco.kitsune.feature.network.response.ViaCepResponse
+import com.hibisco.kitsune.feature.ui.signup.delegate.SignupDelegate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +23,7 @@ import java.lang.Integer.parseInt
 import java.util.*
 
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity(), SignupDelegate {
     private lateinit var binding: ActivitySignupBinding
 
     val retrofitIBGE = RetroFitInstance.getRetrofitIBGE()
@@ -382,5 +386,13 @@ class SignupActivity : AppCompatActivity() {
             binding.cepEt.error = "CEP inválido!"
             false
         }
+    }
+
+    override fun registerSuccessful() {
+        Toast.makeText(baseContext, "Conta criada com sucesso", Toast.LENGTH_LONG).show()
+    }
+
+    override fun registerFailed(error: String) {
+        Toast.makeText(baseContext, error, Toast.LENGTH_LONG).show()
     }
 }

@@ -21,7 +21,7 @@ class SignupViewModel(delegate: SignupDelegate): KitsuneViewModel() {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     delegate.registerSuccessful()
                 }
-                
+
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     delegate.registerFailed(t.message.toString())
                 }
