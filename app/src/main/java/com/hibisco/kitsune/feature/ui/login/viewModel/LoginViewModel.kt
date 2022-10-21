@@ -38,12 +38,17 @@ class LoginViewModel(delegate: LoginDelegate): KitsuneViewModel() {
             object: Callback<Donator> {
                 override fun onResponse(call: Call<Donator>, response: Response<Donator>) {
                     response.body()?.let {
-                        delegate.loginSuccessful(response.body()!!)
+
+                        if (response.code() <= 206) {
+                            delegate.loginSuccessful(response.body()!!)
+                        } else {
+                            delegate.loginFailed(response.message())
+                        }
                     }
                 }
 
                 override fun onFailure(call: Call<Donator>, t: Throwable) {
-                    delegate.loginFailed()
+                    delegate.loginFailed(t.message.toString())
                 }
 
             }

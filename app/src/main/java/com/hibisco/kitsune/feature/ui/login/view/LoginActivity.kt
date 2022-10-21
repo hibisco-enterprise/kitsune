@@ -11,6 +11,7 @@ import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
+import com.hibisco.kitsune.feature.ui.map.view.MapActivity
 import com.hibisco.kitsune.feature.ui.signup.view.SignupActivity
 
 class LoginActivity: AppCompatActivity(), LoginDelegate {
@@ -57,10 +58,12 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
     }
 
     override fun loginSuccessful(response: Donator) {
+        val map = Intent(this, MapActivity::class.java)
+        startActivity(map)
         Toast.makeText(baseContext, response.toString(), Toast.LENGTH_LONG).show()
     }
 
-    override fun loginFailed() {
+    override fun loginFailed(error: String) {
         Toast.makeText(baseContext, "Login deu ruim", Toast.LENGTH_LONG).show()
     }
 }

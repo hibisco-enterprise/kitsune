@@ -418,6 +418,7 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
 
     override fun registerSuccessful() {
         Toast.makeText(applicationContext, "Conta criada com sucesso", Toast.LENGTH_LONG).show()
+        finish()
     }
 
     override fun registerFailed(error: String) {

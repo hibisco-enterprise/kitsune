@@ -4,5 +4,5 @@ import com.hibisco.kitsune.feature.network.model.Donator
 
 interface LoginDelegate {
     fun loginSuccessful(response: Donator)
-    fun loginFailed()
+    fun loginFailed(error: String)
 }
