@@ -15,9 +15,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class SignupViewModel(delegate: SignupDelegate): KitsuneViewModel() {
+class SignupViewModel(val delegate: SignupDelegate): KitsuneViewModel() {
     private val retrofit = RetroFitInstance.getRetrofitKitsune()
-    val delegate: SignupDelegate = delegate
 
     fun signup(donator: DonatorRequest){
         retrofit.register(donator).enqueue(
