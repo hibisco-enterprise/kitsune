@@ -34,9 +34,12 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
 
-            if (checkFields(email, password)) {
-                viewModel.login(email, password)
-            }
+            val map = Intent(this, MapActivity::class.java)
+            startActivity(map)
+
+  //          if (checkFields(email, password)) {
+  //              viewModel.login(email, password)
+   //         }
         }
 
         binding.tvCreateAccount.setOnClickListener{
@@ -60,7 +63,7 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
     override fun loginSuccessful(response: Donator) {
         val map = Intent(this, MapActivity::class.java)
-       // startActivity(map)
+        startActivity(map)
         Toast.makeText(baseContext, response.toString(), Toast.LENGTH_LONG).show()
     }
 

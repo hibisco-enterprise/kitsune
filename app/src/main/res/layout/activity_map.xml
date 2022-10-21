@@ -6,4 +6,11 @@
     android:orientation="vertical"
     tools:context=".feature.ui.map.view.MapActivity">
 
+
+    <fragment
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/map_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
