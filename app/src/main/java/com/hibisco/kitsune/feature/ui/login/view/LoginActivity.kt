@@ -47,7 +47,7 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
     private fun checkFields(login: String?, password: String?): Boolean{
         if (login == null || login == "" || password == null || password == "") {
-            Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_LONG)
+            Toast.makeText(applicationContext, "Preencha todos os campos.", Toast.LENGTH_LONG)
             return false
         }
         return true
@@ -60,7 +60,7 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
     override fun loginSuccessful(response: Donator) {
         val map = Intent(this, MapActivity::class.java)
-        startActivity(map)
+       // startActivity(map)
         Toast.makeText(baseContext, response.toString(), Toast.LENGTH_LONG).show()
     }
 
