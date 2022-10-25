@@ -26,6 +26,7 @@
         app:tabIconTint="@color/secondary_red"
         android:background="@color/white"
         app:tabTextAppearance="@style/custom_tab_text"
+        app:tabIndicatorColor="@color/secondary_red"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.tabs.TabItem
