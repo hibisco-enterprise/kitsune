@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".feature.ui.faq.view.FaqActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Faq fragment"
+        android:textSize="30sp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
