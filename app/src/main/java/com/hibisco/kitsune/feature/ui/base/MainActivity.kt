@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.viewPager.setUserInputEnabled(false)
         setupTabbar()
     }
 
@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
+
+                if (position == 0) {
+                    binding.viewPager.setUserInputEnabled(false)
+                } else {
+                    binding.viewPager.setUserInputEnabled(true)
+                }
             }
         })
 
@@ -40,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.viewPager.currentItem = tab.position
+
+                if (tab.position == 0) {
+                    binding.viewPager.setUserInputEnabled(false)
+                } else {
+                    binding.viewPager.setUserInputEnabled(true)
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
