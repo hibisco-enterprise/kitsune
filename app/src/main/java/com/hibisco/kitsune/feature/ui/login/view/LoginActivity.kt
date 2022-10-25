@@ -9,6 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
+import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
 import com.hibisco.kitsune.feature.ui.map.view.MapActivity
@@ -34,9 +35,8 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
 
-            val map = Intent(this, MapActivity::class.java)
-            startActivity(map)
-
+            val main = Intent(this, MainActivity::class.java)
+            startActivity(main)
   //          if (checkFields(email, password)) {
   //              viewModel.login(email, password)
    //         }
