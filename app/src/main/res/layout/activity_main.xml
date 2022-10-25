@@ -23,9 +23,8 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/black"
         app:tabTextColor="@color/logo_gray"
+        app:tabIconTint="@color/secondary_red"
         android:background="@color/white"
-        app:tabIndicator="@color/secondary_red"
-        app:tabIndicatorColor="@color/secondary_red"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.tabs.TabItem
