@@ -21,29 +21,35 @@
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/logo_gray"
         android:background="@color/white"
         app:tabIndicator="@color/secondary_red"
         app:tabIndicatorColor="@color/secondary_red"
+        app:tabRippleColor="@color/secondary_red"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/incio"
+            android:icon="@drawable/bx_home_heart"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/historico"
+            android:icon="@drawable/lucide_history"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/rules"
             android:text="@string/faq"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/off"
             android:text="@string/perfil"
             />
         
