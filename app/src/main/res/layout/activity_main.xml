@@ -20,8 +20,10 @@
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
         app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/black"
         android:background="@color/white"
         app:tabIndicator="@color/secondary_red"
+        app:tabIndicatorColor="@color/secondary_red"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.tabs.TabItem
