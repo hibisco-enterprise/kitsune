@@ -1,4 +1,4 @@
-package com.hibisco.kitsune
+package com.hibisco.kitsune.feature.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

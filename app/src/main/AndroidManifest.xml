@@ -56,7 +56,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".feature.ui.base.MainActivity"
             android:exported="true">
             >
         </activity>

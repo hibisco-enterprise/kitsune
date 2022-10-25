@@ -1,14 +1,13 @@
 package com.hibisco.kitsune.feature.ui.map.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.hibisco.kitsune.R
 
-class MapFragment : Fragment() {
-
+class MapKitsuneFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -17,3 +16,4 @@ class MapFragment : Fragment() {
         return inflater.inflate(R.layout.activity_map, container, false)
     }
 }
+

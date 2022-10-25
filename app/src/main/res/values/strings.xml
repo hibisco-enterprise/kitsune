@@ -2,4 +2,8 @@
     <string name="app_name">Kitsune</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="incio">Início</string>
+    <string name="historico">Histórico</string>
+    <string name="faq">FAQ</string>
+    <string name="perfil">Perfil</string>
 </resources>
