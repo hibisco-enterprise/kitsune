@@ -22,7 +22,7 @@
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@color/logo_gray"
+        app:tabTextColor="@color/unselected_text"
         app:tabIconTint="@color/secondary_red"
         android:background="@color/white"
         app:tabTextAppearance="@style/custom_tab_text"

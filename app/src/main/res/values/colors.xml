@@ -13,4 +13,5 @@
     <color name="secondary_purple">#8060F3</color>
     <color name="secondary_red">#FF4949</color>
     <color name="border_color">#7B7B7B</color>
+    <color name="unselected_text">#8A8A8A</color>
 </resources>
