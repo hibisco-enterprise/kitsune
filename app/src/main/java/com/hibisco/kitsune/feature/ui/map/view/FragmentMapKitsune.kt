@@ -67,8 +67,10 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
             return false
         }
 
-        val intent = Intent (getActivity(), MainActivity::class.java)
-        getActivity()?.startActivity(intent)
+        activity?.let{
+            val intent = Intent (it, ConfirmDonationActivity::class.java)
+            it.startActivity(intent)
+        }
 
         return true
     }
