@@ -5,14 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
 import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
+
 
 class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
     lateinit var viewModel: MapViewModel
@@ -39,12 +43,15 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
     private fun addMarkers(googleMap: GoogleMap) {
         hospitals.forEach { hospital ->
+
             val marker = googleMap.addMarker(
                 MarkerOptions()
                     .title(hospital.user.name)
                     .snippet(hospital.user.address.address)
                     .position(LatLng(hospital.user.address.latitude, hospital.user.address.longitude))
             )
+
+
         }
     }
     override fun hospitalsResponse(hospitals: List<Hospital>) {
@@ -52,6 +59,12 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
         mapFragment.getMapAsync { googleMap ->
             addMarkers(googleMap)
+
+            googleMap.setOnMapLoadedCallback {
+                val bounds = LatLngBounds.builder()
+                hospitals.forEach { bounds.include(LatLng(it.user.address.latitude, it.user.address.longitude)) }
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 100))
+            }
         }
     }
 
