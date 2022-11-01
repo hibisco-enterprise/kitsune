@@ -14,4 +14,9 @@
     <color name="secondary_red">#FF4949</color>
     <color name="border_color">#7B7B7B</color>
     <color name="unselected_text">#8A8A8A</color>
+    <color name="gray_weak_text">#868E96</color>
+    <color name="gray_strong_text">#495057</color>
+    <color name="gray_bar">#212529</color>
+
+
 </resources>
