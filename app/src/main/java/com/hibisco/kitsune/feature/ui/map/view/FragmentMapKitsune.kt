@@ -1,5 +1,6 @@
 package com.hibisco.kitsune.feature.ui.map.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.feature.network.model.Hospital
+import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
 import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
 
@@ -42,6 +44,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
     }
 
     private fun addMarkers(googleMap: GoogleMap) {
+        var count = 0
         hospitals.forEach { hospital ->
 
             val marker = googleMap.addMarker(
@@ -50,10 +53,26 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                     .snippet(hospital.user.address.address)
                     .position(LatLng(hospital.user.address.latitude, hospital.user.address.longitude))
             )
-
+            if (marker != null) { marker.tag = count }
+            count++
+            googleMap.setOnMarkerClickListener {
+                onMarkerClick(hospital, marker)
+            }
 
         }
     }
+
+    fun onMarkerClick(hospital: Hospital?, marker: Marker?): Boolean {
+        if (marker == null || hospital == null) {
+            return false
+        }
+
+        val intent = Intent (getActivity(), MainActivity::class.java)
+        getActivity()?.startActivity(intent)
+
+        return true
+    }
+
     override fun hospitalsResponse(hospitals: List<Hospital>) {
         this.hospitals = hospitals
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
