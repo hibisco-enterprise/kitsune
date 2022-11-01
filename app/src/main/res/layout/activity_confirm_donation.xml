@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="24dp"
     android:orientation="vertical"
     tools:context=".feature.ui.map.view.ConfirmDonationActivity">
 
@@ -27,6 +27,15 @@
             android:layout_weight="1"
             android:src="@drawable/x"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Santa casa de Misericórdia de São Paulo - Hospital Central"
+        android:fontFamily="@font/outfit_regular"
+        android:textSize="14sp"
+        />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
