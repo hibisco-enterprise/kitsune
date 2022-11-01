@@ -256,6 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/img_o_pos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/estoque_vazio"/>
@@ -270,9 +271,10 @@
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O-"
+                    android:text="O+"
                     />
                 <TextView
+                    android:id="@+id/tv_pct_o_pos"
                     android:textSize="14sp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:textColor="@color/black"
@@ -286,6 +288,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/img_a_pos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/estoque_vazio"/>
@@ -300,40 +303,10 @@
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O-"
+                    android:text="A+"
                     />
                 <TextView
-                    android:textSize="14sp"
-                    android:fontFamily="@font/outfit_semi_bold"
-                    android:textColor="@color/black"
-                    android:text="4%"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/estoque_vazio"/>
-            <LinearLayout
-                android:layout_marginLeft="8dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="14sp"
-                    android:fontFamily="@font/outfit_semi_bold"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="O-"
-                    />
-                <TextView
+                    android:id="@+id/tv_pct_a_pos"
                     android:textSize="14sp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:textColor="@color/black"
@@ -348,6 +321,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/img_b_pos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/estoque_vazio"/>
@@ -362,9 +336,43 @@
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O-"
+                    android:text="B+"
                     />
                 <TextView
+                    android:id="@+id/tv_pct_b_pos"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:textColor="@color/black"
+                    android:text="4%"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_ab_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/estoque_vazio"/>
+            <LinearLayout
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="14sp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AB+"
+                    />
+                <TextView
+                    android:id="@+id/tv_pct_ab_pos"
                     android:textSize="14sp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:textColor="@color/black"
