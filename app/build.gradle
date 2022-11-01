@@ -30,8 +30,13 @@ android {
         }
     }
 
-    viewBinding {
-        enabled true
+    dataBinding {
+        android.buildFeatures.dataBinding = true
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 
     compileOptions {
