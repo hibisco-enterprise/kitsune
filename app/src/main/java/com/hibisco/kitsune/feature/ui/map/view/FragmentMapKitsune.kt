@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
@@ -69,6 +71,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
         activity?.let{
             val intent = Intent (it, ConfirmDonationActivity::class.java)
+            intent.putExtra("hospitalJson", hospitalToGson(hospital))
             it.startActivity(intent)
         }
 
@@ -91,6 +94,18 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
     fun setActions() {
 
+    }
+
+    fun hospitalToGson(hospital: Hospital?): String {
+        val gson = Gson()
+        val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+        val jsonHospital: String = gson.toJson(hospital)
+        println(jsonHospital)
+
+        val jsonHospitalPretty: String = gsonPretty.toJson(hospital)
+        println(jsonHospitalPretty)
+
+        return jsonHospitalPretty
     }
 
     override fun getHospitalsFailed(error: String) {

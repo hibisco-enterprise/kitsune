@@ -12,6 +12,7 @@ import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
+import com.hibisco.kitsune.feature.ui.map.view.ConfirmDonationActivity
 import com.hibisco.kitsune.feature.ui.map.view.MapActivity
 import com.hibisco.kitsune.feature.ui.signup.view.SignupActivity
 
