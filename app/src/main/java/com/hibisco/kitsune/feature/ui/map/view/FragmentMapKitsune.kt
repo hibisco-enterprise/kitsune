@@ -71,7 +71,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
         activity?.let{
             val intent = Intent (it, ConfirmDonationActivity::class.java)
-            intent.putExtra("hospitalJson", hospitalToGson(hospital))
+            intent.putExtra("hospital", hospitalToGson(hospital))
             it.startActivity(intent)
         }
 
