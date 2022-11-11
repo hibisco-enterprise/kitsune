@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -134,7 +135,9 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
     }
 
     override fun getHospitalsFailed(error: String) {
-        // Toast.makeText(this, "Erro no carregamento", Toast.LENGTH_SHORT)
+        activity?.let {
+            Toast.makeText(it, "Erro no carregamento", Toast.LENGTH_SHORT)
+        }
     }
 }
 
