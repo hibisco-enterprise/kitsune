@@ -23,7 +23,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ConfirmDonationActivity"
+            android:name=".feature.ui.map.view.ConfirmDonationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -72,11 +72,7 @@
             android:exported="true">
             >
         </activity>
-        <activity
-            android:name=".feature.ui.map.view.ConfirmDonationActivity"
-            android:exported="true">
-            >
-        </activity>
+
         <activity
             android:name=".feature.ui.login.view.LoginActivity"
             android:exported="true">

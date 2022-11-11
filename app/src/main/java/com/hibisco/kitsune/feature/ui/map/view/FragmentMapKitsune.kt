@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,9 +14,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.R
+import com.hibisco.kitsune.databinding.ActivityConfirmDonationBinding
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
@@ -56,26 +59,48 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                     .position(LatLng(hospital.user.address.latitude, hospital.user.address.longitude))
             )
             if (marker != null) { marker.tag = count }
-            count++
             googleMap.setOnMarkerClickListener {
-                onMarkerClick(hospital, marker)
+                onMarkerClick(marker, count++)
             }
 
         }
     }
 
-    fun onMarkerClick(hospital: Hospital?, marker: Marker?): Boolean {
-        if (marker == null || hospital == null) {
-            return false
-        }
-
-        activity?.let{
-            val intent = Intent (it, ConfirmDonationActivity::class.java)
-            intent.putExtra("hospital", hospitalToGson(hospital))
-            it.startActivity(intent)
-        }
-
+    fun onMarkerClick(marker: Marker?, index: Int): Boolean {
+        if (marker == null || index > hospitals.size ) { return false }
+        val hospital: Hospital = hospitals.get(index)
+        showDialogOne(hospital)
         return true
+    }
+
+    fun showDialogOne(hospital: Hospital) {
+        activity?.let{
+            val dialog = BottomSheetDialog(it).apply {
+                window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE )
+            }
+
+            val sheetBinding: ActivityConfirmDonationBinding =
+                ActivityConfirmDonationBinding.inflate(layoutInflater,
+                    null,
+                    false)
+            dialog.setContentView(sheetBinding.root)
+            sheetBinding.btnX.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            val title = hospital.user.name
+            val subtitle = hospital.user.email
+            val address = "${hospital.user.address.address}, ${hospital.user.address.number} - " +
+                    "${hospital.user.address.neighborhood}, ${hospital.user.address.city} - " +
+                    "${hospital.user.address.uf}, ${hospital.user.address.cep}"
+            val phone = hospital.user.phone
+
+            sheetBinding.tvTitle.setText(title)
+            sheetBinding.tvSubtitle.setText(subtitle)
+            sheetBinding.tvAddress.setText(address)
+            sheetBinding.tvPhone.setText(phone)
+            dialog.show()
+        }
     }
 
     override fun hospitalsResponse(hospitals: List<Hospital>) {

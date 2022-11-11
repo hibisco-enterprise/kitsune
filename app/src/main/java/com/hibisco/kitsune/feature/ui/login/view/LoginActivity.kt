@@ -2,11 +2,15 @@ package com.hibisco.kitsune.feature.ui.login.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.hibisco.kitsune.R
+import com.hibisco.kitsune.databinding.ActivityConfirmDonationBinding
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.base.MainActivity
@@ -37,7 +41,8 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             val password = binding.passwordEt.text.toString()
 
             val main = Intent(this, MainActivity::class.java)
-            startActivity(main)
+            // startActivity(main)
+            showDialogOne()
   //          if (checkFields(email, password)) {
   //              viewModel.login(email, password)
    //         }
@@ -46,7 +51,27 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
         binding.tvCreateAccount.setOnClickListener{
             val signup = Intent(this, SignupActivity::class.java)
             startActivity(signup)
+
         }
+    }
+
+    fun showDialogOne() {
+            val dialog = BottomSheetDialog(this).apply {
+                window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+            }
+
+            val sheetBinding: ActivityConfirmDonationBinding =
+                ActivityConfirmDonationBinding.inflate(layoutInflater,
+                    null,
+                    false)
+        dialog.setContentView(sheetBinding.root)
+
+
+            sheetBinding.btnX.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+
     }
 
     private fun checkFields(login: String?, password: String?): Boolean{
