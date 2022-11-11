@@ -91,7 +91,8 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
             val title = hospital.user.name
             val subtitle = hospital.user.email
-            val address = "${hospital.user.address.address}, ${hospital.user.address.number} - " +
+            val address = "${hospital.user.address.address}, " +
+                    "${hospital.user.address.number} - " +
                     "${hospital.user.address.neighborhood}, ${hospital.user.address.city} - " +
                     "${hospital.user.address.uf}, ${hospital.user.address.cep}"
             val phone = hospital.user.phone
