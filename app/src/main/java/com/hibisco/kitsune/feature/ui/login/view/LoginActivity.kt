@@ -42,7 +42,6 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
             val main = Intent(this, MainActivity::class.java)
             // startActivity(main)
-            showDialogOne()
   //          if (checkFields(email, password)) {
   //              viewModel.login(email, password)
    //         }
@@ -53,25 +52,6 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             startActivity(signup)
 
         }
-    }
-
-    fun showDialogOne() {
-            val dialog = BottomSheetDialog(this).apply {
-                window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            }
-
-            val sheetBinding: ActivityConfirmDonationBinding =
-                ActivityConfirmDonationBinding.inflate(layoutInflater,
-                    null,
-                    false)
-        dialog.setContentView(sheetBinding.root)
-
-
-            sheetBinding.btnX.setOnClickListener {
-                dialog.dismiss()
-            }
-            dialog.show()
-
     }
 
     private fun checkFields(login: String?, password: String?): Boolean{
