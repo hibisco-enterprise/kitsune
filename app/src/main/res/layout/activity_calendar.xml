@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
     tools:context=".feature.ui.calendar.view.CalendarActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/img_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/left_arrow"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/tv_choose_date"
+
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escolha uma data"
+        android:textSize="24sp"
+        android:fontFamily="@font/outfit_medium"
+        android:textColor="@color/black"
+
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/img_arrow"
+        />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/tv_choose_date"
+        >
+    </CalendarView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_bar"
+
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dia escolhido"
+            android:fontFamily="@font/outfit_regular"
+            android:textColor="@color/gray_weak_text"
+            android:textSize="14sp"
+
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dd/mm/aaaa"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/gray_strong_text"
+            android:textSize="16sp"
+
+            android:layout_marginBottom="24dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_button"
+            android:text="Próximo"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/outfit_medium"
+            android:textAllCaps="false"
+
+            android:layout_marginBottom="5dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

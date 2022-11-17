@@ -41,7 +41,7 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             val password = binding.passwordEt.text.toString()
 
             val main = Intent(this, MainActivity::class.java)
-            // startActivity(main)
+            startActivity(main)
   //          if (checkFields(email, password)) {
   //              viewModel.login(email, password)
    //         }
