@@ -38,11 +38,11 @@ class MapViewModel(val delegate: MapDelegate): KitsuneViewModel() {
                     call: Call<List<BloodTypeStock>>,
                     response: Response<List<BloodTypeStock>>
                 ) {
-                    TODO("Not yet implemented")
+                    response.body()?.let { delegate.bloodStockResponse(it) }
                 }
 
                 override fun onFailure(call: Call<List<BloodTypeStock>>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    delegate.getBloodStockFailed(t.message.toString())
                 }
 
             }
