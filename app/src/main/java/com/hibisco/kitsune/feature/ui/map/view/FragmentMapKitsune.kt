@@ -20,6 +20,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityConfirmDonationBinding
+import com.hibisco.kitsune.feature.network.model.BloodTypeStock
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
@@ -29,6 +30,7 @@ import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
 class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
     lateinit var viewModel: MapViewModel
     lateinit var hospitals: List<Hospital>
+    var sheetBinding: ActivityConfirmDonationBinding? = null
     // private lateinit var binding: FragmentMapKitsuneBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,13 +82,13 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                 window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE )
             }
 
-            val sheetBinding: ActivityConfirmDonationBinding =
-                ActivityConfirmDonationBinding.inflate(layoutInflater,
+            sheetBinding = ActivityConfirmDonationBinding.inflate(layoutInflater,
                     null,
                     false)
-            dialog.setContentView(sheetBinding.root)
-            sheetBinding.btnX.setOnClickListener {
+            dialog.setContentView(sheetBinding!!.root)
+            sheetBinding!!.btnX.setOnClickListener {
                 dialog.dismiss()
+                sheetBinding = null
             }
 
             val title = hospital.user.name
@@ -97,10 +99,11 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                     "${hospital.user.address.uf}, ${hospital.user.address.cep}"
             val phone = hospital.user.phone
 
-            sheetBinding.tvTitle.setText(title)
-            sheetBinding.tvSubtitle.setText(subtitle)
-            sheetBinding.tvAddress.setText(address)
-            sheetBinding.tvPhone.setText(phone)
+            sheetBinding!!.tvTitle.setText(title)
+            sheetBinding!!.tvSubtitle.setText(subtitle)
+            sheetBinding!!.tvAddress.setText(address)
+            sheetBinding!!.tvPhone.setText(phone)
+            viewModel.getBloodStock(hospital.idHospital)
             dialog.show()
         }
     }
@@ -139,6 +142,67 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
         activity?.let {
             Toast.makeText(it, "Erro no carregamento", Toast.LENGTH_SHORT)
         }
+    }
+
+    override fun bloodStockResponse(bloodStock: List<BloodTypeStock>) {
+        var oPositive: Double? = null
+        var oNegative: Double? = null
+        var aPositive: Double? = null
+        var aNegative: Double? = null
+        var bPositive: Double? = null
+        var bNegative: Double? = null
+        var abPositive: Double? = null
+        var abNegative: Double? = null
+
+        bloodStock.forEach { bloodStock ->
+            when (bloodStock.bloodType) {
+                "O+" -> oPositive = bloodStock.percentage
+                "O-" -> oNegative = bloodStock.percentage
+                "A+" -> aPositive = bloodStock.percentage
+                "A-" -> aNegative = bloodStock.percentage
+                "B+" -> bPositive = bloodStock.percentage
+                "B-" -> bNegative = bloodStock.percentage
+                "AB+" -> abPositive = bloodStock.percentage
+                else -> abNegative = bloodStock.percentage
+            }
+        }
+
+        sheetBinding!!.tvPctOPos.text = oPositive.toString()
+        sheetBinding!!.tvPctONeg.text = oNegative.toString()
+        sheetBinding!!.tvPctAPos.text = aPositive.toString()
+        sheetBinding!!.tvPctANeg.text = aNegative.toString()
+        sheetBinding!!.tvPctBPos.text = bPositive.toString()
+        sheetBinding!!.tvPctBNeg.text = bNegative.toString()
+        sheetBinding!!.tvPctAbPos.text = abPositive.toString()
+        sheetBinding!!.tvPctAbNeg.text = abNegative.toString()
+
+        sheetBinding!!.imgOPos.setImageResource(getImageByBloodPercentage(oPositive))
+        sheetBinding!!.imgONeg.setImageResource(getImageByBloodPercentage(oNegative))
+        sheetBinding!!.imgAPos.setImageResource(getImageByBloodPercentage(aPositive))
+        sheetBinding!!.imgANeg.setImageResource(getImageByBloodPercentage(aNegative))
+        sheetBinding!!.imgBPos.setImageResource(getImageByBloodPercentage(bPositive))
+        sheetBinding!!.imgBNeg.setImageResource(getImageByBloodPercentage(bNegative))
+        sheetBinding!!.imgAbPos.setImageResource(getImageByBloodPercentage(abPositive))
+        sheetBinding!!.imgAbNeg.setImageResource(getImageByBloodPercentage(abNegative))
+    }
+
+    fun getImageByBloodPercentage(percentage: Double?): Int {
+        val empty: Int = R.drawable.estoque_vazio
+        val half: Int = R.drawable.estoque_medio
+        val full: Int = R.drawable.estoque_cheio
+
+        if (percentage == null) { return empty}
+        if (percentage < 30.0) {
+            return empty
+        } else if (percentage < 60.0) {
+            return half
+        } else {
+            return full
+        }
+    }
+
+    override fun getBloodStockFailed(error: String) {
+        TODO("Not yet implemented")
     }
 }
 
