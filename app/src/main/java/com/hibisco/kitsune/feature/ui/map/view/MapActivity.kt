@@ -12,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.databinding.ActivityMapBinding
+import com.hibisco.kitsune.feature.network.model.BloodTypeStock
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
@@ -56,5 +57,13 @@ class MapActivity: AppCompatActivity(), MapDelegate {
 
     override fun getHospitalsFailed(error: String) {
         Toast.makeText(applicationContext, "Erro no carregamento", Toast.LENGTH_SHORT)
+    }
+
+    override fun bloodStockResponse(bloodStock: List<BloodTypeStock>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getBloodStockFailed(error: String) {
+        TODO("Not yet implemented")
     }
 }
