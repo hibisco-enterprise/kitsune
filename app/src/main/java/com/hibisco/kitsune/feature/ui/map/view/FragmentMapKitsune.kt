@@ -25,6 +25,7 @@ import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
 import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
+import kotlin.math.roundToInt
 
 
 class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
@@ -166,15 +167,15 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                 else -> abNegative = bloodStock.percentage
             }
         }
-
-        sheetBinding!!.tvPctOPos.text = oPositive.toString()
-        sheetBinding!!.tvPctONeg.text = oNegative.toString()
-        sheetBinding!!.tvPctAPos.text = aPositive.toString()
-        sheetBinding!!.tvPctANeg.text = aNegative.toString()
-        sheetBinding!!.tvPctBPos.text = bPositive.toString()
-        sheetBinding!!.tvPctBNeg.text = bNegative.toString()
-        sheetBinding!!.tvPctAbPos.text = abPositive.toString()
-        sheetBinding!!.tvPctAbNeg.text = abNegative.toString()
+        "${oPositive?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctOPos.text = "${oNegative?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctONeg.text = "${oPositive?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctAPos.text = "${aPositive?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctANeg.text = "${aNegative?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctBPos.text = "${bPositive?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctBNeg.text = "${bNegative?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctAbPos.text = "${bNegative?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctAbNeg.text = "${abNegative?.roundToInt().toString()}%"
 
         sheetBinding!!.imgOPos.setImageResource(getImageByBloodPercentage(oPositive))
         sheetBinding!!.imgONeg.setImageResource(getImageByBloodPercentage(oNegative))
