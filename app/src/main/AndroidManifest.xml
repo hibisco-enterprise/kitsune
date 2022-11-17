@@ -79,6 +79,12 @@
             android:exported="true">
             >
         </activity>
+
+        <activity
+            android:name=".feature.ui.calendar.view.CalendarActivity"
+            android:exported="true">
+            >
+        </activity>
         <activity
             android:name=".feature.ui.login.view.LoginActivity"
             android:exported="true">

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.CalendarView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -90,6 +91,14 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
             sheetBinding!!.btnX.setOnClickListener {
                 dialog.dismiss()
                 sheetBinding = null
+            }
+
+            sheetBinding!!.btnConfirm.setOnClickListener {
+                activity?.let {
+                    val calendarActivity = Intent(it, CalendarView::class.java)
+                    startActivity(calendarActivity)
+                }
+
             }
 
             val title = hospital.user.name
@@ -192,9 +201,9 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
         val half: Int = R.drawable.estoque_medio
         val full: Int = R.drawable.estoque_cheio
 
-        if (percentage == null) { return empty}
+        if (percentage == null) { return empty }
         if (percentage < 30.0) {
-            return empty
+            return R.drawable.estoque_vazio
         } else if (percentage < 60.0) {
             return half
         } else {
