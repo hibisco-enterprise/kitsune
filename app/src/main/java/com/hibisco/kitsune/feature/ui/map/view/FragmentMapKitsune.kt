@@ -177,14 +177,14 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
                 else -> abNegative = bloodStock.percentage
             }
         }
-        "${oPositive?.roundToInt().toString()}%"
-        sheetBinding!!.tvPctOPos.text = "${oNegative?.roundToInt().toString()}%"
-        sheetBinding!!.tvPctONeg.text = "${oPositive?.roundToInt().toString()}%"
+
+        sheetBinding!!.tvPctOPos.text = "${oPositive?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctONeg.text = "${oNegative?.roundToInt().toString()}%"
         sheetBinding!!.tvPctAPos.text = "${aPositive?.roundToInt().toString()}%"
         sheetBinding!!.tvPctANeg.text = "${aNegative?.roundToInt().toString()}%"
         sheetBinding!!.tvPctBPos.text = "${bPositive?.roundToInt().toString()}%"
         sheetBinding!!.tvPctBNeg.text = "${bNegative?.roundToInt().toString()}%"
-        sheetBinding!!.tvPctAbPos.text = "${bNegative?.roundToInt().toString()}%"
+        sheetBinding!!.tvPctAbPos.text = "${abPositive?.roundToInt().toString()}%"
         sheetBinding!!.tvPctAbNeg.text = "${abNegative?.roundToInt().toString()}%"
 
         sheetBinding!!.imgOPos.setImageResource(getImageByBloodPercentage(oPositive))
