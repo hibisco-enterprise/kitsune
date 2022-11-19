@@ -12,5 +12,13 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCalendarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setActions()
+    }
+
+    private fun setActions() {
+        binding.imgArrow.setOnClickListener {
+            finish()
+        }
     }
 }
