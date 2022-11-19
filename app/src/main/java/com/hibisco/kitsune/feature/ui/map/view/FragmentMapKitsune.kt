@@ -24,6 +24,7 @@ import com.hibisco.kitsune.databinding.ActivityConfirmDonationBinding
 import com.hibisco.kitsune.feature.network.model.BloodTypeStock
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
+import com.hibisco.kitsune.feature.ui.calendar.view.CalendarActivity
 import com.hibisco.kitsune.feature.ui.map.delegate.MapDelegate
 import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
 import kotlin.math.roundToInt
@@ -95,7 +96,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
 
             sheetBinding!!.btnConfirm.setOnClickListener {
                 activity?.let {
-                    val calendarActivity = Intent(it, CalendarView::class.java)
+                    val calendarActivity = Intent(it, CalendarActivity::class.java)
                     startActivity(calendarActivity)
                 }
 
