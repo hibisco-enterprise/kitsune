@@ -11,11 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -30,7 +28,7 @@ import com.hibisco.kitsune.feature.ui.map.viewModel.MapViewModel
 import kotlin.math.roundToInt
 
 
-class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
+class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate, OnMarkerClickListener {
     lateinit var viewModel: MapViewModel
     lateinit var hospitals: List<Hospital>
     var sheetBinding: ActivityConfirmDonationBinding? = null
@@ -66,16 +64,16 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
             )
             if (marker != null) { marker.tag = count }
             googleMap.setOnMarkerClickListener {
-
-                onMarkerClick(marker)
+                onMarkerClick(it)
             }
             count++
         }
     }
 
-    fun onMarkerClick(marker: Marker?): Boolean {
-        val index: Int = marker?.tag as Int
-        if (marker == null || index > hospitals.size ) { return false }
+    override fun onMarkerClick(marker: Marker): Boolean {
+         val index: Int = marker?.tag as Int
+        println("Marker name: ${marker.title}")
+        if (index > hospitals.size ) { return false }
         val hospital: Hospital = hospitals.get(index)
         showDialogOne(hospital)
         return true
