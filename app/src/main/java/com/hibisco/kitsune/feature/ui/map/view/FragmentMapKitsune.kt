@@ -66,13 +66,15 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate {
             )
             if (marker != null) { marker.tag = count }
             googleMap.setOnMarkerClickListener {
-                onMarkerClick(marker, count++)
-            }
 
+                onMarkerClick(marker)
+            }
+            count++
         }
     }
 
-    fun onMarkerClick(marker: Marker?, index: Int): Boolean {
+    fun onMarkerClick(marker: Marker?): Boolean {
+        val index: Int = marker?.tag as Int
         if (marker == null || index > hospitals.size ) { return false }
         val hospital: Hospital = hospitals.get(index)
         showDialogOne(hospital)
