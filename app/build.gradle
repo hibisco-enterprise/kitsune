@@ -77,4 +77,6 @@ dependencies {
     implementation "io.insert-koin:koin-android:3.2.1"
     testImplementation "io.insert-koin:koin-test:3.2.1"
 
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
