@@ -34,7 +34,7 @@ class CalendarActivity : AppCompatActivity() {
             this.month = month + 1
             this.day = day
 
-            binding.tvDate.text = "$day/$month/$year"
+            binding.tvDate.text = "$day/${month+1}/$year"
         }
 
     }
@@ -44,7 +44,7 @@ class CalendarActivity : AppCompatActivity() {
         month = LocalDateTime.now().monthValue
         day = LocalDateTime.now().dayOfMonth
         total = (year * 360) + (month * 30) + day
-        
+
         binding.tvDate.text = "$day/$month/$year"
     }
 }
