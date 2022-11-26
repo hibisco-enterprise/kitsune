@@ -71,8 +71,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate, OnMarker
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-         val index: Int = marker?.tag as Int
-        println("Marker name: ${marker.title}")
+        val index: Int = marker?.tag as Int
         if (index > hospitals.size ) { return false }
         val hospital: Hospital = hospitals.get(index)
         showDialogOne(hospital)
