@@ -1,16 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
+
     tools:context=".feature.ui.faq.view.FaqActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Faq fragment"
-        android:textSize="30sp"/>
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:textSize="24sp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dúvidas Comuns"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_regular"
+            android:textColor="@color/gray_weak_text"
+            android:textSize="14sp"
+            />
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="Quais são os requisitos básicos para poder doar?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="Ter idade entre 16 e 69 anos, pesar acima de 50kg, possuir em mãos documento com foto emitidos por orgão oficial, e o mais importante de tudo que é estar bem de saúde."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="Qual a importância da doação de sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="O sangue doado é separado em diferentes componentes (hemácias, plaquetas, plasma e outros), e assim poderá beneficiar mais de um paciente com apenas uma unidade coleta."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="O que pode impedir que eu faça uma doação?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="Ingerir álcool nas últimas 48h, fazer o uso de algum contraceptivo, ter usado algum tipo de droga ilícita no último ano, e ser portador de alguma doença tranmissível pelo sangue. Também não podem doar mulheres grávidas e homossexuais."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="Quanto tempo leva o processo de doação?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="Todo o processo da doação, que inclui cadastro, pré-triagem, triagem e lanche, pode levar de 40 a 80 minutos. No entanto, o tempo pode variar muito de acordo com o processo adotado por cada Banco de Sangue e a quantidade de pessoas que estão presentes no local."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="Qual a frequência posso doar sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="O intervalo mínimo entre doações é de 2 meses para homens e 3 meses para mulheres. É importante ressaltar que os homens podem doar no máximo 4 vezes durante o ano e as mulheres 3 vezes nesse mesmo período. Já para pessoas com idade a cima de 60 anos, o intervalo mínimo entre as doações é de 6 meses."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:text="Depois de quanto tempo as pessoas que fizeram piercing, tatuagem ou maquiagem definitiva podem doar sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="12sp"
+                android:text="Para tatuagens e maquiagem definitiva o período é de um ano. Pessoas que colocaram piercing em local apropriado e com material descartável, devem aguardar um período de 6  a 12 meses antes da doação, esse período pode variar conforme a exigência de cada banco de sangue."
+                android:textColor="@color/gray_subtitle_sec"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

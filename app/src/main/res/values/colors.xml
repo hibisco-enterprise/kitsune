@@ -17,6 +17,9 @@
     <color name="gray_weak_text">#868E96</color>
     <color name="gray_strong_text">#495057</color>
     <color name="gray_bar">#212529</color>
+    <color name="gray_back">#E5E4E4</color>
+    <color name="black_title_sec">#363636</color>
+    <color name="gray_subtitle_sec">#535354</color>
 
 
 </resources>

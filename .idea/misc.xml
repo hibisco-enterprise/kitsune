@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/drawable/custom_button.xml" value="0.1" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/drawable/custom_gray_background.xml" value="0.1" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout-v28/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_calendar.xml" value="0.23943661971830985" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_confirm_donation.xml" value="0.22" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_faq.xml" value="0.25" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_history.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_map.xml" value="0.22" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/activity_signup.xml" value="0.22" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/custom_spinner_dropdown_item.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/bcsouza3/OneDrive - Stefanini/Documents/Faculdade/3semestre/GrupoPI/kitsune/app/src/main/res/layout/custom_spinner_list_item.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
