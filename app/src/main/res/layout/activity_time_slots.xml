@@ -20,23 +20,31 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escolha uma data"
+        android:text="Horários disponíveis"
         android:textSize="24sp"
         android:fontFamily="@font/outfit_medium"
         android:textColor="@color/black"
 
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="32dp"
         android:layout_below="@+id/img_arrow"
         />
 
-    <CalendarView
-        android:id="@+id/calendarView"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_below="@id/tv_choose_date"
+        android:layout_below="@+id/tv_choose_date"
         >
-    </CalendarView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTimeSlots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            tools:itemCount="3"
+            />
+    </ScrollView>
+
+
 
     <LinearLayout
         android:layout_alignParentBottom="true"

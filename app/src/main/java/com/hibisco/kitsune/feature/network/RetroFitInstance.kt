@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 
 object RetroFitInstance {
-    // private const val baseUrl = "https://kitsunews.hopto.org"
+    // private const val baseUrl = "https://kitsune-ws.hopto.org"
     private const val baseUrl = "http://100.24.239.211:8080"
     // private const val baseUrl = "http://10.0.2.2:8080/"
     private const val baseUrlExternalIBGE = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/"
