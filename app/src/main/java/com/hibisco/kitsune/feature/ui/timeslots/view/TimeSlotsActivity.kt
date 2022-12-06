@@ -14,6 +14,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private lateinit var binding: ActivityTimeSlotsBinding
     private lateinit var date: DateModel
     private lateinit var viewModel: TimeSlotsViewModel
+    private var idHospital: Long = 0
     private var chosenDate = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,8 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         setRecycleView()
 
         val dateString: String = intent.getStringExtra("date").toString()
+        this.idHospital = intent.getLongExtra("idHospital", 0)
+
         date = gsonToDate(dateString)
 
         binding.tvDate.text = "${date.day}/${date.month}/${date.year}"
@@ -36,7 +39,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.createAppointment(this.date, 6, 6, 9, 30)
+            viewModel.createAppointment(this.date, idHospital, 6, 9, 30)
         }
     }
 

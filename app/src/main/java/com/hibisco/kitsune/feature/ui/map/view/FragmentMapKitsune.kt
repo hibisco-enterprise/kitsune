@@ -96,6 +96,7 @@ class FragmentMapKitsune: Fragment(R.layout.activity_map), MapDelegate, OnMarker
             sheetBinding!!.btnConfirm.setOnClickListener {
                 activity?.let {
                     val calendarActivity = Intent(it, CalendarActivity::class.java)
+                    calendarActivity.putExtra("idHospital", hospital.idHospital)
                     startActivity(calendarActivity)
                 }
 

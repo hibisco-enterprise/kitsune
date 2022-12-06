@@ -12,6 +12,7 @@ import java.time.LocalDateTime
 
 class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding
+    private var idHospital: Long = 0
     private var year: Int = 0
     private var month: Int = 0
     private var day: Int = 0
@@ -21,6 +22,8 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCalendarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        idHospital = intent.getLongExtra("idHospital", 0)
 
         setActions()
         calculate()
@@ -43,6 +46,7 @@ class CalendarActivity : AppCompatActivity() {
             val timeSlots = Intent(applicationContext, TimeSlotsActivity::class.java)
             val date = DateModel(day, month, year)
             timeSlots.putExtra("date", this.dateToGson(date))
+            timeSlots.putExtra("idHospital", this.idHospital)
             startActivity(timeSlots)
         }
 
