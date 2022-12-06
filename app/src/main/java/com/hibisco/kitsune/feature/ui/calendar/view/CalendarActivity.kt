@@ -5,14 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityCalendarBinding
-import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
-import com.hibisco.kitsune.feature.ui.timeslots.TimeSlotsActivity
-import java.time.LocalDate
+import com.hibisco.kitsune.feature.ui.timeslots.view.TimeSlotsActivity
 import java.time.LocalDateTime
-import java.util.Date
 
 class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding

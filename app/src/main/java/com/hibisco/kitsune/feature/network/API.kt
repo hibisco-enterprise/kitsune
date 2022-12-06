@@ -1,9 +1,6 @@
 package com.hibisco.kitsune.feature.network
 
-import com.hibisco.kitsune.feature.network.model.BloodTypeStock
-import com.hibisco.kitsune.feature.network.model.Donator
-import com.hibisco.kitsune.feature.network.model.DonatorRequest
-import com.hibisco.kitsune.feature.network.model.Hospital
+import com.hibisco.kitsune.feature.network.model.*
 import com.hibisco.kitsune.feature.network.request.LoginRequest
 import retrofit2.Call
 import retrofit2.http.*
@@ -23,4 +20,7 @@ interface API {
     fun getBlockStock(
         @Path("id") id: Long
     ): Call<List<BloodTypeStock>>
+
+    @POST("donators/appointment")
+    fun createAppointment(@Body appointment: AppointmentRequestDTO): Call<Void>
 }

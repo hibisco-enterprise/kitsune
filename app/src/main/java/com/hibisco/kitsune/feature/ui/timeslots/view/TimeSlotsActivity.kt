@@ -1,4 +1,4 @@
-package com.hibisco.kitsune.feature.ui.timeslots
+package com.hibisco.kitsune.feature.ui.timeslots.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,18 +6,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.gson.Gson
 import com.hibisco.kitsune.databinding.ActivityTimeSlotsBinding
-import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
+import com.hibisco.kitsune.feature.ui.timeslots.delegate.TimeSlotsDelegate
+import com.hibisco.kitsune.feature.ui.timeslots.viewModel.TimeSlotsViewModel
 
-class TimeSlotsActivity : AppCompatActivity() {
+class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private lateinit var binding: ActivityTimeSlotsBinding
     private lateinit var date: DateModel
+    private lateinit var viewModel: TimeSlotsViewModel
+    private var chosenDate = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTimeSlotsBinding.inflate(layoutInflater)
+        viewModel = TimeSlotsViewModel(this)
         setContentView(binding.root)
         setActions()
         setRecycleView()
@@ -32,13 +34,19 @@ class TimeSlotsActivity : AppCompatActivity() {
         binding.imgArrow.setOnClickListener {
             finish()
         }
+
+        binding.btnNext.setOnClickListener {
+            viewModel.createAppointment(this.date, 6, 6, 9, 30)
+        }
     }
 
     private fun setRecycleView() {
-        val timeSlots = listOf(TimeSlot("8:00"),
+        val timeSlots = listOf(
+            TimeSlot("8:00"),
             TimeSlot("9:00"),
             TimeSlot("9:30"),
-            TimeSlot("10:30"))
+            TimeSlot("10:30")
+        )
 
         val recyclerContainer = binding.recyclerTimeSlots
         recyclerContainer.layoutManager = LinearLayoutManager(
@@ -56,5 +64,13 @@ class TimeSlotsActivity : AppCompatActivity() {
         println("> From JSON String:\n" + date)
 
         return date
+    }
+
+    override fun onAppointmentCreated() {
+        println("Sucessfull on creating appointment")
+    }
+
+    override fun onAppointmentCreationFailed() {
+       println("Failed on creating appointment")
     }
 }
