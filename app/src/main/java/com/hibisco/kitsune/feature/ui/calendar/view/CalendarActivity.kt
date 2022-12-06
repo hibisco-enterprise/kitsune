@@ -1,9 +1,15 @@
 package com.hibisco.kitsune.feature.ui.calendar.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityCalendarBinding
+import com.hibisco.kitsune.feature.network.model.Hospital
+import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
+import com.hibisco.kitsune.feature.ui.timeslots.TimeSlotsActivity
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.Date
@@ -37,6 +43,13 @@ class CalendarActivity : AppCompatActivity() {
             binding.tvDate.text = "$day/${month+1}/$year"
         }
 
+        binding.btnNext.setOnClickListener {
+            val timeSlots = Intent(applicationContext, TimeSlotsActivity::class.java)
+            val date = DateModel(day, month, year)
+            timeSlots.putExtra("date", this.dateToGson(date))
+            startActivity(timeSlots)
+        }
+
     }
 
     private fun calculate() {
@@ -46,5 +59,18 @@ class CalendarActivity : AppCompatActivity() {
         total = (year * 360) + (month * 30) + day
 
         binding.tvDate.text = "$day/$month/$year"
+    }
+
+
+    fun dateToGson(date: DateModel?): String {
+        val gson = Gson()
+        val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+        val jsonDate: String = gson.toJson(date)
+        println(jsonDate)
+
+        val jsonPretty: String = gsonPretty.toJson(date)
+        println(jsonPretty)
+
+        return jsonPretty
     }
 }
