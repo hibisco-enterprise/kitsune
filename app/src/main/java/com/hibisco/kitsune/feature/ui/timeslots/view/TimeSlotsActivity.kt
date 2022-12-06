@@ -25,6 +25,8 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         setActions()
         setRecycleView()
 
+        viewModel
+
         val dateString: String = intent.getStringExtra("date").toString()
         this.idHospital = intent.getLongExtra("idHospital", 0)
 
@@ -39,7 +41,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.createAppointment(this.date, idHospital, 6, 9, 30)
+            viewModel.createAppointment(this.date, idHospital, 6, 9, 0)
         }
     }
 
