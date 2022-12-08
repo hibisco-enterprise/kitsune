@@ -217,7 +217,7 @@ class SignupActivity : AppCompatActivity(), SignupDelegate {
 
         binding.cepEt.addTextChangedListener {
             val cep = binding.cepEt.text.toString()
-            if(cep != "" && cep.indexOf('_') < 0){
+            if(cep.matches("\\d{5}-\\d{3}".toRegex())){
 
                 val requestCEP = retrofitViaCEP.getAddressByCep(cep).enqueue(
                     object : Callback<ViaCepResponse> {

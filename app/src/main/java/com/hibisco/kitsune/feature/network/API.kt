@@ -23,4 +23,14 @@ interface API {
 
     @POST("donators/appointment")
     fun createAppointment(@Body appointment: AppointmentRequestDTO): Call<Void>
+
+    @PUT("donators/{id}")
+    fun saveProfile(@Path("id") id: Long, @Body donator: DonatorRequest): Call<Void>
+
+    @PUT("donators/address/{id}")
+    fun saveAddress(@Path("id") id: Long, @Body address: AddressRequest): Call<Void>
+
+    @GET("donators/{id}")
+    fun getDonator(@Path("id") id: Long): Call<Donator>
+
 }
