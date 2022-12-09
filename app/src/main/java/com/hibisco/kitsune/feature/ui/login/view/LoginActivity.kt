@@ -18,6 +18,7 @@ import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
+import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
 import com.hibisco.kitsune.feature.ui.map.view.ConfirmDonationActivity
@@ -28,6 +29,7 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
     lateinit var viewModel: LoginViewModel
+    private var milkString: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,27 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
 
         auth = Firebase.auth
         setActions()
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        checkIfIsLogged()
+    }
+
+    private fun checkIfIsLogged() {
+        val sharedPreference = getSharedPreferences("USER_DATA", 0)
+        val modelString: String? = sharedPreference.getString("userModelString","defaultUser")
+        val milkString: String? = sharedPreference.getString("milkString","defaultMilk")
+
+        if (modelString != null &&  milkString != null) {
+            if (modelString == "defaultUser" || milkString == "defaultMilk") { return }
+            val donator: Donator = gsonToDonator(modelString)
+            binding.emailEt.setText(donator.user.email)
+            binding.passwordEt.setText(milkString)
+
+            viewModel.login(donator.user.email, milkString)
+        }
     }
 
 
@@ -61,20 +84,21 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
             Toast.makeText(applicationContext, "Preencha todos os campos.", Toast.LENGTH_LONG)
             return false
         }
+        this.milkString = password
         return true
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
     }
 
     override fun loginSuccessful(response: Donator) {
         Toast.makeText(baseContext, response.toString(), Toast.LENGTH_LONG).show()
 
-        val sharedPreference =  getSharedPreferences("USER_DATA", Context.MODE_PRIVATE)
+        val sharedPreference =  getSharedPreferences("USER_DATA", 0)
         var editor = sharedPreference.edit()
-        editor.putString("userModelString", this.donatorToGson(response))
+
+        if (milkString != null) {
+            editor.putString("userModelString", this.donatorToGson(response))
+            editor.putString("milkString", milkString)
+        }
+
         editor.commit()
 
         val main = Intent(this, MainActivity::class.java)
@@ -95,5 +119,13 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
         println(jsonStringPretty)
 
         return jsonStringPretty
+    }
+
+    fun gsonToDonator(gsonString: String): Donator {
+        val gson = Gson()
+        val model: Donator = gson.fromJson(gsonString, Donator::class.java)
+        println("> From JSON String:\n" + model)
+
+        return model
     }
 }

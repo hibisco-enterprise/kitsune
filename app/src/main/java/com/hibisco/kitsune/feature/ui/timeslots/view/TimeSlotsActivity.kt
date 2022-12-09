@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.gson.Gson
 import com.hibisco.kitsune.databinding.ActivityTimeSlotsBinding
+import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
 import com.hibisco.kitsune.feature.ui.timeslots.delegate.TimeSlotsDelegate
 import com.hibisco.kitsune.feature.ui.timeslots.viewModel.TimeSlotsViewModel
@@ -16,6 +17,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private lateinit var viewModel: TimeSlotsViewModel
     private var idHospital: Long = 0
     private var chosenDate = 0
+    private lateinit var donator: Donator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         setContentView(binding.root)
         setActions()
         setRecycleView()
+        donator = getUserPreferences()
 
         val dateString: String = intent.getStringExtra("date").toString()
         this.idHospital = intent.getLongExtra("idHospital", 0)
@@ -39,7 +42,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.createAppointment(this.date, idHospital, 6, 9, 0)
+            viewModel.createAppointment(this.date, idHospital, donator.idDonator, 9, 0)
         }
     }
 
@@ -67,6 +70,17 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         println("> From JSON String:\n" + date)
 
         return date
+    }
+
+    fun getUserPreferences(): Donator {
+        val sharedPreference =  getSharedPreferences("USER_DATA", 0)
+        var editor = sharedPreference.edit()
+        val gsonString: String? = sharedPreference.getString("userModelString","defaultUser")
+        val gson = Gson()
+        val model: Donator = gson.fromJson(gsonString, Donator::class.java)
+        println("> From JSON String:\n" + model)
+
+        return model
     }
 
     override fun onAppointmentCreated() {

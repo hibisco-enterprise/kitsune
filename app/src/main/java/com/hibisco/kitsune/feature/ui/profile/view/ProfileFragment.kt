@@ -296,12 +296,12 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    override fun editProfileSuccessful(){
+    fun editProfileSuccessful(){
         setEnabledDados(false);
         populateNameAndEmail(binding.nomeEt.text.toString(), binding.emailEt.text.toString())
     }
 
-    override fun editAddressSuccessful(){
+    fun editAddressSuccessful(){
         setEnabledEndereco(false)
     }
 
@@ -383,7 +383,7 @@ class ProfileFragment : Fragment() {
         //TODO preencher campos com o local storage
     }
 
-    override fun donatorResponse(donator: Donator){
+    fun donatorResponse(donator: Donator){
         //TODO Inserir usuário no local storage
     }
 }
