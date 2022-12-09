@@ -25,8 +25,6 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         setActions()
         setRecycleView()
 
-        viewModel
-
         val dateString: String = intent.getStringExtra("date").toString()
         this.idHospital = intent.getLongExtra("idHospital", 0)
 

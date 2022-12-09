@@ -1,5 +1,6 @@
 package com.hibisco.kitsune.feature.ui.login.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
@@ -9,10 +10,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityConfirmDonationBinding
 import com.hibisco.kitsune.databinding.ActivityLoginBinding
 import com.hibisco.kitsune.feature.network.model.Donator
+import com.hibisco.kitsune.feature.network.model.Hospital
 import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.login.delegate.LoginDelegate
 import com.hibisco.kitsune.feature.ui.login.viewModel.LoginViewModel
@@ -35,22 +39,20 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
         setActions()
     }
 
+
     private fun setActions() {
         binding.btnLogin.setOnClickListener{
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
 
-            val main = Intent(this, MainActivity::class.java)
-            startActivity(main)
-  //          if (checkFields(email, password)) {
-  //              viewModel.login(email, password)
-   //         }
+            if (checkFields(email, password)) {
+                viewModel.login(email, password)
+            }
         }
 
         binding.tvCreateAccount.setOnClickListener{
             val signup = Intent(this, SignupActivity::class.java)
             startActivity(signup)
-
         }
     }
 
@@ -68,12 +70,30 @@ class LoginActivity: AppCompatActivity(), LoginDelegate {
     }
 
     override fun loginSuccessful(response: Donator) {
-        val map = Intent(this, MapActivity::class.java)
-        startActivity(map)
         Toast.makeText(baseContext, response.toString(), Toast.LENGTH_LONG).show()
+
+        val sharedPreference =  getSharedPreferences("USER_DATA", Context.MODE_PRIVATE)
+        var editor = sharedPreference.edit()
+        editor.putString("userModelString", this.donatorToGson(response))
+        editor.commit()
+
+        val main = Intent(this, MainActivity::class.java)
+        startActivity(main)
     }
 
     override fun loginFailed(error: String) {
         Toast.makeText(baseContext, "Login deu ruim", Toast.LENGTH_LONG).show()
+    }
+
+    fun donatorToGson(donator: Donator): String {
+        val gson = Gson()
+        val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+        val jsonString: String = gson.toJson(donator)
+        println(jsonString)
+
+        val jsonStringPretty: String = gsonPretty.toJson(donator)
+        println(jsonStringPretty)
+
+        return jsonStringPretty
     }
 }
