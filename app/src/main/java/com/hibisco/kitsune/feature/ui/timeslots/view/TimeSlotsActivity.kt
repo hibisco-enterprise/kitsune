@@ -74,7 +74,6 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
 
     fun getUserPreferences(): Donator {
         val sharedPreference =  getSharedPreferences("USER_DATA", 0)
-        var editor = sharedPreference.edit()
         val gsonString: String? = sharedPreference.getString("userModelString","defaultUser")
         val gson = Gson()
         val model: Donator = gson.fromJson(gsonString, Donator::class.java)
