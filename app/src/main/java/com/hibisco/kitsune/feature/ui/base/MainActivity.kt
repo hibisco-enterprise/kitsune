@@ -18,6 +18,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.viewPager.setUserInputEnabled(false)
         setupTabbar()
+
+        val shouldOpenModal: Boolean = intent.getBooleanExtra("shouldOpenModal")
+        if (shouldOpenModal) {
+            openModal()
+        }
+    }
+
+    private fun openModal() {
+        
     }
 
     private fun setupTabbar() {

@@ -1,15 +1,19 @@
 package com.hibisco.kitsune.feature.ui.timeslots.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.gson.Gson
 import com.hibisco.kitsune.databinding.ActivityTimeSlotsBinding
 import com.hibisco.kitsune.feature.network.model.Donator
+import com.hibisco.kitsune.feature.ui.base.MainActivity
 import com.hibisco.kitsune.feature.ui.calendar.model.DateModel
 import com.hibisco.kitsune.feature.ui.timeslots.delegate.TimeSlotsDelegate
 import com.hibisco.kitsune.feature.ui.timeslots.viewModel.TimeSlotsViewModel
+
 
 class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private lateinit var binding: ActivityTimeSlotsBinding
@@ -43,6 +47,7 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
 
         binding.btnNext.setOnClickListener {
             viewModel.createAppointment(this.date, idHospital, donator.idDonator, 9, 0)
+            this.onAppointmentCreated()
         }
     }
 
@@ -84,6 +89,10 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
 
     override fun onAppointmentCreated() {
         println("Sucessfull on creating appointment")
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val main = Intent(this, MainActivity::class.java)
+        main.putExtra("shouldOpenModal", true)
+        startActivity(main)
     }
 
     override fun onAppointmentCreationFailed() {
