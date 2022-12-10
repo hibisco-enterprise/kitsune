@@ -47,7 +47,6 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
 
         binding.btnNext.setOnClickListener {
             viewModel.createAppointment(this.date, idHospital, donator.idDonator, 9, 0)
-            this.onAppointmentCreated()
         }
     }
 
