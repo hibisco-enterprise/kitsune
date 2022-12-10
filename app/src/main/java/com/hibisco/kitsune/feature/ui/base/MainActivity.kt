@@ -3,6 +3,7 @@ package com.hibisco.kitsune.feature.ui.base
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -19,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.setUserInputEnabled(false)
         setupTabbar()
 
-        val shouldOpenModal: Boolean = intent.getBooleanExtra("shouldOpenModal")
+        val shouldOpenModal: Boolean = intent.getBooleanExtra("shouldOpenModal", false)
         if (shouldOpenModal) {
             openModal()
         }
     }
 
     private fun openModal() {
-        
+        Toast.makeText(baseContext, "Agendamento concluido!", Toast.LENGTH_LONG).show()
     }
 
     private fun setupTabbar() {
