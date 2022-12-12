@@ -3,10 +3,16 @@ package com.hibisco.kitsune.feature.ui.timeslots.view
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.gson.Gson
+import com.hibisco.kitsune.R
 import com.hibisco.kitsune.databinding.ActivityTimeSlotsBinding
 import com.hibisco.kitsune.feature.network.model.Donator
 import com.hibisco.kitsune.feature.ui.base.MainActivity
@@ -53,18 +59,39 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private fun setRecycleView() {
         val timeSlots = listOf(
             TimeSlot("8:00"),
+            TimeSlot("8:30"),
             TimeSlot("9:00"),
             TimeSlot("9:30"),
-            TimeSlot("10:30")
+            TimeSlot("10:00"),
+            TimeSlot("10:30"),
+            TimeSlot("11:00"),
+            TimeSlot("11:30"),
+            TimeSlot("12:00"),
+            TimeSlot("12:30"),
+            TimeSlot("13:00"),
+            TimeSlot("13:30"),
+            TimeSlot("14:00"),
+            TimeSlot("14:30"),
+            TimeSlot("15:00"),
+            TimeSlot("15:30"),
+            TimeSlot("16:00")
         )
 
         val recyclerContainer = binding.recyclerTimeSlots
-        recyclerContainer.layoutManager = LinearLayoutManager(
+        recyclerContainer.layoutManager = GridLayoutManager(
             baseContext,
-            OrientationHelper.HORIZONTAL,
-            false
+            3
         )
-        recyclerContainer.adapter = TimeSlotsAdapter(timeSlots)
+
+        val adapter = TimeSlotsAdapter(timeSlots)
+        recyclerContainer.adapter = adapter
+
+
+        adapter.setOnClickListener(object : TimeSlotsAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+
+            }
+        })
     }
 
     fun gsonToDate(dateJson: String): DateModel {
