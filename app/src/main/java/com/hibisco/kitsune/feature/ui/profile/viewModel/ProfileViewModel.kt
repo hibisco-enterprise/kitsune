@@ -14,9 +14,8 @@ class ProfileViewModel(val delegate: ProfileDelegate): KitsuneViewModel() {
 
     private val retrofit = RetroFitInstance.getRetrofitKitsune()
 
-    fun saveProfile(donator: DonatorRequest){
-        // Precisa integrar com o local storage
-        retrofit.saveProfile(1, donator).enqueue(
+    fun saveProfile(id: Long, donator: DonatorRequest){
+        retrofit.saveProfile(id, donator).enqueue(
             object: Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     println(response)
@@ -39,9 +38,9 @@ class ProfileViewModel(val delegate: ProfileDelegate): KitsuneViewModel() {
         )
     }
 
-    fun saveAddress(address: AddressRequest){
+    fun saveAddress(id: Int, address: AddressRequest){
         // Precisa integrar com o local storage
-        retrofit.saveAddress(1, address).enqueue(
+        retrofit.saveAddress(id, address).enqueue(
             object: Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     println(response)

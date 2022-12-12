@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.hibisco.kitsune.R
 import androidx.fragment.app.Fragment
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.hibisco.kitsune.databinding.ActivityProfileBinding
 import com.hibisco.kitsune.feature.network.RetroFitInstance
 import com.hibisco.kitsune.feature.network.model.AddressRequest
@@ -18,24 +21,29 @@ import com.hibisco.kitsune.feature.network.model.UserRequest
 import com.hibisco.kitsune.feature.network.model.ibge.Estado
 import com.hibisco.kitsune.feature.network.model.ibge.Municipio
 import com.hibisco.kitsune.feature.network.response.ViaCepResponse
+import com.hibisco.kitsune.feature.ui.profile.delegate.ProfileDelegate
 import com.hibisco.kitsune.feature.ui.profile.viewModel.ProfileViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(R.layout.activity_profile), ProfileDelegate {
 
     lateinit var viewModel: ProfileViewModel
 
     private var _binding: ActivityProfileBinding? = null
     private val binding get() = _binding!!
 
+    val bloodTypes: MutableList<String> = ArrayList()
+
     val retrofitIBGE = RetroFitInstance.getRetrofitIBGE()
     val retrofitViaCEP = RetroFitInstance.getRetrofitViaCep()
 
     var validCEP = false
     var localidade: String? = ""
+
+    lateinit var loggedUser: Donator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +54,16 @@ class ProfileFragment : Fragment() {
 
         setEnabledDados(false)
         setEnabledEndereco(false)
+        loggedUser = getUserPreferences()
 
-        viewModel = ProfileViewModel(viewModel.delegate)
+        viewModel = ProfileViewModel(this)
+
+        populateNameAndEmail(loggedUser.user.name, loggedUser.user.email)
 
         // Spinner element
         val spinnerBloodType = binding.bloodtypeSpinner
 
         // Spinner Drop down elements
-        val bloodTypes: MutableList<String> = ArrayList()
         bloodTypes.add("O+")
         bloodTypes.add("O-")
         bloodTypes.add("A+")
@@ -71,9 +81,6 @@ class ProfileFragment : Fragment() {
 
         // attaching data adapter to spinner
         spinnerBloodType.adapter = bloodtypeAdapter
-
-        //TODO colocar id do local storage
-        viewModel.getDonator(1)
 
         // Spinner element
         val spinnerUF = binding.ufSpinner
@@ -178,7 +185,7 @@ class ProfileFragment : Fragment() {
                             response: Response<ViaCepResponse>
                         ) {
                             val resposta = response.body()
-                            if (resposta?.erro == true || response.code() == 400){
+                            if (resposta == null || resposta?.erro == true || response.code() == 400){
                                 validCEP = false
                                 binding.ufSpinner.adapter = ufAdapter
                                 binding.cidadeSpinner.adapter = cidadeAdapter
@@ -187,7 +194,9 @@ class ProfileFragment : Fragment() {
                             } else {
                                 validCEP = true
 
-                                binding.ufSpinner.setSelection(ufs.indexOf(resposta?.uf), true)
+                                println(ufs.indexOf(resposta.uf))
+                                binding.ufSpinner.setSelection(ufs.indexOf(resposta.uf))
+                                println(binding.ufSpinner.selectedItem)
 
                                 retrofitIBGE.getMunicipios(binding.ufSpinner.selectedItem.toString()).enqueue(
                                     object : Callback<List<Municipio>> {
@@ -238,27 +247,27 @@ class ProfileFragment : Fragment() {
         binding.lblCancelarDados.setOnClickListener {
             setEnabledDados(false)
 
-            //TODO Colocar dados de volta nos campos
+            populateFields()
         }
 
         binding.lblSalvarDados.setOnClickListener {
             if (validateDados()){
-                viewModel.saveProfile(
+                viewModel.saveProfile(loggedUser.idDonator,
                     DonatorRequest(
                         binding.bloodtypeSpinner.selectedItem.toString(),
                         UserRequest(
                             binding.emailEt.text.toString(),
                             binding.nomeEt.text.toString(),
-                            "cpf",
-                            "senha",
+                            loggedUser.user.documentNumber,
+                            getMilkStringPreferences(),
                             binding.telefoneEt.text.toString(),
                             AddressRequest(
-                                binding.logradouroEt.text.toString(),
-                                binding.bairroEt.text.toString(),
-                                binding.cidadeSpinner.selectedItem.toString(),
-                                binding.ufSpinner.selectedItem.toString(),
-                                binding.cepEt.text.toString(),
-                                binding.numeroEt.text.toString().toInt()
+                                loggedUser.user.address.address,
+                                loggedUser.user.address.neighborhood,
+                                loggedUser.user.address.city,
+                                loggedUser.user.address.uf,
+                                loggedUser.user.address.cep,
+                                loggedUser.user.address.number
                             )
                         )
                     )
@@ -272,13 +281,13 @@ class ProfileFragment : Fragment() {
 
         binding.lblCancelarEndereco.setOnClickListener {
             setEnabledEndereco(false)
-
-            //TODO Colocar dados de volta nos campos
+            populateFields()
         }
 
         binding.lblSalvarEndereco.setOnClickListener {
             if (validateEndereco()){
                 viewModel.saveAddress(
+                    loggedUser.user.address.idAddress,
                     AddressRequest(
                         binding.logradouroEt.text.toString(),
                         binding.bairroEt.text.toString(),
@@ -291,18 +300,22 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        populateFields()
+
 
 
         return binding.root
     }
 
-    fun editProfileSuccessful(){
+    override fun editProfileSuccessful(){
         setEnabledDados(false);
         populateNameAndEmail(binding.nomeEt.text.toString(), binding.emailEt.text.toString())
+        Toast.makeText(activity!!, "Dados atualizados", Toast.LENGTH_SHORT)
     }
 
-    fun editAddressSuccessful(){
+    override fun editAddressSuccessful(){
         setEnabledEndereco(false)
+        Toast.makeText(activity!!, "Endereço atualizado", Toast.LENGTH_SHORT)
     }
 
     fun validateDados(): Boolean {
@@ -380,10 +393,68 @@ class ProfileFragment : Fragment() {
     }
 
     fun populateFields(){
-        //TODO preencher campos com o local storage
+        binding.nomeEt.setText(loggedUser.user.name)
+        binding.emailEt.setText(loggedUser.user.email)
+        binding.telefoneEt.setText(loggedUser.user.phone)
+        binding.bloodtypeSpinner.setSelection(bloodTypes.indexOf(loggedUser.bloodType))
+
+        binding.cepEt.setText(loggedUser.user.address.cep)
+        binding.numeroEt.setText(loggedUser.user.address.number.toString())
     }
 
-    fun donatorResponse(donator: Donator){
-        //TODO Inserir usuário no local storage
+    fun getUserPreferences(): Donator {
+        val sharedPreference =  activity!!.getSharedPreferences("USER_DATA", 0)
+        val gsonString: String? = sharedPreference.getString("userModelString","defaultUser")
+        val gson = Gson()
+        val model: Donator = gson.fromJson(gsonString, Donator::class.java)
+        println("> From JSON String:\n" + model)
+
+        return model
+    }
+
+    fun getMilkStringPreferences(): String {
+        val sharedPreference =  activity!!.getSharedPreferences("USER_DATA", 0)
+        val value: String = sharedPreference.getString("milkString","milkString")!!
+
+        return value
+    }
+
+    fun donatorToGson(donator: Donator): String {
+        val gson = Gson()
+        val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+        val jsonString: String = gson.toJson(donator)
+        println(jsonString)
+
+        val jsonStringPretty: String = gsonPretty.toJson(donator)
+
+        return jsonStringPretty
+    }
+
+    override fun donatorResponse(donator: Donator){
+        val sharedPreference =  activity!!.getSharedPreferences("USER_DATA", 0)
+        var editor = sharedPreference.edit()
+        editor.putString("userModelString", this.donatorToGson(donator))
+
+        editor.commit()
+    }
+
+    override fun errorOnEditProfile(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
+    }
+
+    override fun editProfileFailed(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
+    }
+
+    override fun errorOnEditAddress(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
+    }
+
+    override fun editAddressFailed(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
+    }
+
+    override fun getDonatorFailed(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
     }
 }

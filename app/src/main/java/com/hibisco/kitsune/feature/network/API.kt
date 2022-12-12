@@ -28,7 +28,7 @@ interface API {
     fun saveProfile(@Path("id") id: Long, @Body donator: DonatorRequest): Call<Void>
 
     @PUT("donators/address/{id}")
-    fun saveAddress(@Path("id") id: Long, @Body address: AddressRequest): Call<Void>
+    fun saveAddress(@Path("id") id: Int, @Body address: AddressRequest): Call<Void>
 
     @GET("donators/{id}")
     fun getDonator(@Path("id") id: Long): Call<Donator>
