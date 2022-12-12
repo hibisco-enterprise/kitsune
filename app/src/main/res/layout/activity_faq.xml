@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
+    android:animateLayoutChanges="true"
 
     tools:context=".feature.ui.faq.view.FaqActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -27,12 +29,13 @@
             android:layout_height="wrap_content"
             android:text="Dúvidas Comuns"
             android:layout_marginTop="22dp"
-            android:fontFamily="@font/outfit_regular"
+            android:fontFamily="@font/outfit_medium"
             android:textColor="@color/gray_weak_text"
             android:textSize="14sp"
             />
 
         <LinearLayout
+            android:id="@+id/question1"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,49 +47,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
-                android:textSize="14sp"
-                android:text="Quais são os requisitos básicos para poder doar?"
-                android:textColor="@color/black_title_sec"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
-                android:textSize="12sp"
-                android:text="Ter idade entre 16 e 69 anos, pesar acima de 50kg, possuir em mãos documento com foto emitidos por orgão oficial, e o mais importante de tudo que é estar bem de saúde."
-                android:textColor="@color/gray_subtitle_sec"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:padding="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:background="@drawable/custom_gray_background">
-            
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
                 android:text="Qual a importância da doação de sangue?"
                 android:textColor="@color/black_title_sec"/>
             <TextView
+                android:id="@+id/answer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:text="O sangue doado é separado em diferentes componentes (hemácias, plaquetas, plasma e outros), e assim poderá beneficiar mais de um paciente com apenas uma unidade coleta."
-                android:textColor="@color/gray_subtitle_sec"/>
+                android:text="A doação de sangue é um compromisso social, pois o sangue é necessário para realização das cirurgias nas unidades hospitalares, pacientes em tratamento quimioterápico, pacientes com leucemia ou aqueles que realizaram transplantes no Centro de Transplante de Medula Óssea (CEMO)."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
-
-
         <LinearLayout
+            android:id="@+id/question2"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,21 +76,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
-                android:text="O que pode impedir que eu faça uma doação?"
+                android:text="O que é feito com o sangue que doamos?"
                 android:textColor="@color/black_title_sec"/>
             <TextView
+                android:id="@+id/answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:text="Ingerir álcool nas últimas 48h, fazer o uso de algum contraceptivo, ter usado algum tipo de droga ilícita no último ano, e ser portador de alguma doença tranmissível pelo sangue. Também não podem doar mulheres grávidas e homossexuais."
-                android:textColor="@color/gray_subtitle_sec"/>
+                android:text="Após a coleta, a bolsa de sangue é fracionada em componentes sanguíneos (concentrado de hemácias, de plaquetas e plasma). Esses componentes são liberados para uso somente após o resultado dos exames sorológicos. Uma única unidade doada pode beneficiar três pacientes."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/question3"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,21 +105,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
-                android:text="Quanto tempo leva o processo de doação?"
+                android:text="O que é preciso para doar sangue?"
                 android:textColor="@color/black_title_sec"/>
             <TextView
+                android:id="@+id/answer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:text="Todo o processo da doação, que inclui cadastro, pré-triagem, triagem e lanche, pode levar de 40 a 80 minutos. No entanto, o tempo pode variar muito de acordo com o processo adotado por cada Banco de Sangue e a quantidade de pessoas que estão presentes no local."
-                android:textColor="@color/gray_subtitle_sec"/>
+                android:text="Podem doar sangue pessoas entre 16 e 69 anos e que estejam pesando mais de 50kg. Além disso, é preciso apresentar documento oficial com foto e menores de 18 anos só podem doar com consentimento formal dos responsáveis (acesse o formulário). Pessoas com febre, gripe ou resfriado, diarreia recente, grávidas e mulheres no pós-parto não podem doar temporariamente."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/question4"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,21 +134,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
-                android:text="Qual a frequência posso doar sangue?"
+                android:text="Quem não pode doar sangue?"
                 android:textColor="@color/black_title_sec"/>
             <TextView
+                android:id="@+id/answer4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:text="O intervalo mínimo entre doações é de 2 meses para homens e 3 meses para mulheres. É importante ressaltar que os homens podem doar no máximo 4 vezes durante o ano e as mulheres 3 vezes nesse mesmo período. Já para pessoas com idade a cima de 60 anos, o intervalo mínimo entre as doações é de 6 meses."
-                android:textColor="@color/gray_subtitle_sec"/>
+                android:text="Não podem doar sangue pessoas que tiveram hepatite após os 11 anos de idade, tenham evidência clínica ou laboratorial de doenças sexualmente transmissíveis, como hepatite B e C, aids (vírus HIV), doenças ligadas ao vírus HTLV I e II. Doenças de chagas, o uso de drogas ilícitas injetáveis e malária também são impedimentos definitivos para doar sangue."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Antes de doar sangue"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/gray_weak_text"
+            android:textSize="14sp"
+            />
+
         <LinearLayout
+            android:id="@+id/question5"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,19 +173,191 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
-                android:text="Depois de quanto tempo as pessoas que fizeram piercing, tatuagem ou maquiagem definitiva podem doar sangue?"
+                android:text="É preciso levar algum documento de identidade para a doação de sangue?"
                 android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:text="Sim. O candidato deve apresentar documento original com foto, expedido pelo órgão oficial. Exemplos: Carteira de Identidade (RG ou RNE), passaporte, Carteira de Trabalho, Carteira de Identidade de Profissional, Carteira Nacional de Habilitação com foto e Certificado de Reservista."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question6"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
+                android:textSize="14sp"
+                android:text="É necessário estar em jejum para doar sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:text="Para tatuagens e maquiagem definitiva o período é de um ano. Pessoas que colocaram piercing em local apropriado e com material descartável, devem aguardar um período de 6  a 12 meses antes da doação, esse período pode variar conforme a exigência de cada banco de sangue."
-                android:textColor="@color/gray_subtitle_sec"/>
+                android:text="O doador não deve estar em jejum, mas é importante evitar alimentos gordurosos três horas antes da doação."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Durante a doação"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/gray_weak_text"
+            android:textSize="14sp"
+            />
+
+        <LinearLayout
+            android:id="@+id/question7"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="14sp"
+                android:text="Quanto tempo dura a doação de sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:text="O procedimento todo (cadastro, aferição de sinais vitais, teste de anemia, triagem clínica, coleta do sangue e lanche) dura em média 40 minutos."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question8"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="14sp"
+                android:text="Doar sangue dói?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:text="Percepção de dor é pessoal. É necessário puncionar a veia para retirada do sangue."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Após doar sangue"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/gray_weak_text"
+            android:textSize="14sp"
+            />
+
+        <LinearLayout
+            android:id="@+id/question9"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="14sp"
+                android:text="Quanto tempo organismo leva para repor o sangue doado?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:text="O organismo repõe o volume de sangue doado nas primeiras 72 horas após a doação."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question10"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/custom_gray_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:textSize="14sp"
+                android:text="Quantas vezes por ano posso doar sangue?"
+                android:textColor="@color/black_title_sec"/>
+            <TextView
+                android:id="@+id/answer10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_regular"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:text="Para homens, o intervalo mínimo entre as doações é de 60 dias (com até quatro doações no período de 12 meses). Para mulheres, o intervalo mínimo é de 90 dias (com até três no período de 12 meses)."
+                android:textColor="@color/gray_subtitle_sec"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+
+
 
     </LinearLayout>
 
