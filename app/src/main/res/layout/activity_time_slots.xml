@@ -59,26 +59,78 @@
 
             android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dia escolhido"
-            android:fontFamily="@font/outfit_regular"
-            android:textColor="@color/gray_weak_text"
-            android:textSize="14sp"
+            >
 
-            android:layout_marginBottom="4dp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dd/mm/aaaa"
-            android:fontFamily="@font/outfit_medium"
-            android:textColor="@color/gray_strong_text"
-            android:textSize="16sp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data escolhida"
+                    android:fontFamily="@font/outfit_regular"
+                    android:textColor="@color/gray_weak_text"
+                    android:textSize="14sp"
 
-            android:layout_marginBottom="24dp"/>
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dd/mm/yyyy"
+                    android:fontFamily="@font/outfit_medium"
+                    android:textColor="@color/gray_strong_text"
+                    android:textSize="16sp"
+
+                    android:layout_marginBottom="24dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Horário escolhido"
+                    android:fontFamily="@font/outfit_regular"
+                    android:textColor="@color/gray_weak_text"
+                    android:textSize="14sp"
+                    android:gravity="right"
+
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hh:mm"
+                    android:fontFamily="@font/outfit_medium"
+                    android:textColor="@color/gray_strong_text"
+                    android:textSize="16sp"
+                    android:gravity="right"
+
+
+                    android:layout_marginBottom="24dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"

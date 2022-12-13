@@ -26,8 +26,29 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
     private lateinit var date: DateModel
     private lateinit var viewModel: TimeSlotsViewModel
     private var idHospital: Long = 0
-    private var chosenDate = 0
+    private var hour: Int = 0
+    private var minute: Int = 0
     private lateinit var donator: Donator
+
+    val timeSlots = listOf(
+        TimeSlot("8:00", 8, 0),
+        TimeSlot("8:30", 8, 30),
+        TimeSlot("9:00", 9, 0),
+        TimeSlot("9:30", 9, 30),
+        TimeSlot("10:00", 10, 0),
+        TimeSlot("10:30", 10, 30),
+        TimeSlot("11:00", 11, 0),
+        TimeSlot("11:30", 11, 30),
+        TimeSlot("12:00", 12, 0),
+        TimeSlot("12:30", 12, 30),
+        TimeSlot("13:00", 13, 0),
+        TimeSlot("13:30", 13, 30),
+        TimeSlot("14:00", 14, 0),
+        TimeSlot("14:30", 14, 30),
+        TimeSlot("15:00", 15, 0),
+        TimeSlot("15:30", 15, 30),
+        TimeSlot("16:00", 16, 0)
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +57,6 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         setContentView(binding.root)
         setActions()
         setRecycleView()
-        donator = getUserPreferences()
 
         val dateString: String = intent.getStringExtra("date").toString()
         this.idHospital = intent.getLongExtra("idHospital", 0)
@@ -52,31 +72,13 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.createAppointment(this.date, idHospital, donator.idDonator, 9, 0)
+            donator = getUserPreferences()
+            viewModel.createAppointment(this.date, idHospital, donator.idDonator, hour, minute)
+
         }
     }
 
     private fun setRecycleView() {
-        val timeSlots = listOf(
-            TimeSlot("8:00"),
-            TimeSlot("8:30"),
-            TimeSlot("9:00"),
-            TimeSlot("9:30"),
-            TimeSlot("10:00"),
-            TimeSlot("10:30"),
-            TimeSlot("11:00"),
-            TimeSlot("11:30"),
-            TimeSlot("12:00"),
-            TimeSlot("12:30"),
-            TimeSlot("13:00"),
-            TimeSlot("13:30"),
-            TimeSlot("14:00"),
-            TimeSlot("14:30"),
-            TimeSlot("15:00"),
-            TimeSlot("15:30"),
-            TimeSlot("16:00")
-        )
-
         val recyclerContainer = binding.recyclerTimeSlots
         recyclerContainer.layoutManager = GridLayoutManager(
             baseContext,
@@ -86,10 +88,14 @@ class TimeSlotsActivity : AppCompatActivity(), TimeSlotsDelegate {
         val adapter = TimeSlotsAdapter(timeSlots)
         recyclerContainer.adapter = adapter
 
-
         adapter.setOnClickListener(object : TimeSlotsAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
+                hour = timeSlots[position].hour
+                minute = timeSlots[position].minute
 
+                binding.tvTime.text = timeSlots[position].time
+
+                Toast.makeText(this@TimeSlotsActivity, "${timeSlots[position].time}", Toast.LENGTH_SHORT).show()
             }
         })
     }

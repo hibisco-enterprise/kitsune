@@ -7,12 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hibisco.kitsune.R
-import java.util.Collections
 
 class TimeSlotsAdapter(val slots: List<TimeSlot>) : RecyclerView.Adapter<ViewHolder>(){
 
     private lateinit var listener: onItemClickListener
-    private var holders: ArrayList<TimeSlotHolder>? = null
 
     interface onItemClickListener {
         fun onItemClick (position: Int)
@@ -30,7 +28,18 @@ class TimeSlotsAdapter(val slots: List<TimeSlot>) : RecyclerView.Adapter<ViewHol
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         (holder as TimeSlotHolder).bind(slots[position])
-        holders?.add(holder)
+        val row_index = position
+
+//        holder.itemView.setOnClickListener(View.OnClickListener {
+//
+//            notifyDataSetChanged()
+//        })
+
+//        if (row_index === position) {
+//            holder.itemView.setBackgroundColor(R.drawable.time_slot_border_selected)
+//        } else {
+//            holder.itemView.setBackgroundColor(R.drawable.time_slot_border)
+//        }
     }
 
     override fun getItemCount(): Int {
