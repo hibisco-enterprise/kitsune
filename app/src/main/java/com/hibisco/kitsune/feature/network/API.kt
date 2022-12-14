@@ -33,4 +33,7 @@ interface API {
     @GET("donators/{id}")
     fun getDonator(@Path("id") id: Long): Call<Donator>
 
+    @GET("donators/appointment/{id}/accepted")
+    fun getAppointments(@Path("id") id: Long): Call<List<Appointment>>
+
 }

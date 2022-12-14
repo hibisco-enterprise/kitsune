@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/history_background"
+    android:layout_marginBottom="12dp">
+
+    <TextView
+        android:id="@+id/tvHistoryLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Hospital Aleatório"
+        android:textColor="@color/black_title_sec"
+        android:fontFamily="@font/outfit_medium"/>
+
+    <TextView
+        android:id="@+id/tvHistoryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12/05 - 05:00"
+        android:textColor="@color/gray_subtitle_sec"
+        android:fontFamily="@font/outfit_regular"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

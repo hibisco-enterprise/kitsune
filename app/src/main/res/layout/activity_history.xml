@@ -1,16 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.ui.history.view.HistoryActivity">
+    android:animateLayoutChanges="true"
 
-    <TextView
+    tools:context=".feature.ui.faq.view.FaqActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="History fragment"
-        android:textSize="30sp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Histórico"
+            android:textSize="24sp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/black_title"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Análise das suas últimas doações"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/black_title"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"
+            />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Últimas doações"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/outfit_medium"
+            android:textColor="@color/black_title"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/historyRc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

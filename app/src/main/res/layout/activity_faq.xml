@@ -21,7 +21,7 @@
             android:textSize="24sp"
             android:layout_marginTop="22dp"
             android:fontFamily="@font/outfit_medium"
-            android:textColor="@color/black"
+            android:textColor="@color/black_title"
             />
 
         <TextView
