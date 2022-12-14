@@ -300,6 +300,10 @@ class ProfileFragment : Fragment(R.layout.activity_profile), ProfileDelegate {
             }
         }
 
+        binding.btnSair.setOnClickListener {
+            viewModel.logoff(loggedUser.user.idUser)
+        }
+
         populateFields()
 
 
@@ -311,6 +315,7 @@ class ProfileFragment : Fragment(R.layout.activity_profile), ProfileDelegate {
         setEnabledDados(false);
         populateNameAndEmail(binding.nomeEt.text.toString(), binding.emailEt.text.toString())
         Toast.makeText(activity!!, "Dados atualizados", Toast.LENGTH_SHORT)
+        viewModel.getDonator(loggedUser.idDonator)
     }
 
     override fun editAddressSuccessful(){
@@ -455,6 +460,21 @@ class ProfileFragment : Fragment(R.layout.activity_profile), ProfileDelegate {
     }
 
     override fun getDonatorFailed(error: String) {
+        Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
+    }
+
+    override fun logoffSuccessful() {
+        val sharedPreference =  activity!!.getSharedPreferences("USER_DATA", 0)
+        var editor = sharedPreference.edit()
+        editor.putString("userModelString", "defaultUser")
+        editor.putString("milkString", "defaultMilk")
+
+        editor.commit()
+
+        activity!!.finish()
+    }
+
+    override fun logoffFailed(error: String) {
         Toast.makeText(activity!!, error, Toast.LENGTH_SHORT)
     }
 }

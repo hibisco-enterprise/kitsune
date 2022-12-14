@@ -15,4 +15,7 @@ interface ProfileDelegate {
     fun donatorResponse(donator: Donator)
     fun getDonatorFailed(error: String)
 
+    fun logoffSuccessful()
+    fun logoffFailed(error: String)
+
 }

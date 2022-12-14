@@ -36,4 +36,7 @@ interface API {
     @GET("donators/appointment/{id}/accepted")
     fun getAppointments(@Path("id") id: Long): Call<List<Appointment>>
 
+    @DELETE("donators/logoff/{idUser}")
+    fun logoff(@Path("idUser") idUser: Int): Call<Void>
+
 }

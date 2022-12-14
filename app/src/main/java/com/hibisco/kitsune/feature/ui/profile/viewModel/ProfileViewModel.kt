@@ -64,7 +64,6 @@ class ProfileViewModel(val delegate: ProfileDelegate): KitsuneViewModel() {
     }
 
     fun getDonator(id: Long){
-        // Precisa integrar com o local storage
         retrofit.getDonator(id).enqueue(
             object: Callback<Donator> {
                 override fun onResponse(call: Call<Donator>, response: Response<Donator>) {
@@ -76,6 +75,26 @@ class ProfileViewModel(val delegate: ProfileDelegate): KitsuneViewModel() {
                 override fun onFailure(call: Call<Donator>, t: Throwable) {
                     println(t.message.toString())
                     delegate.getDonatorFailed(t.message.toString())
+                }
+
+            }
+        )
+    }
+
+    fun logoff(id: Int){
+        retrofit.logoff(id).enqueue(
+            object: Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    println(response)
+                    if (response.code() == 200){
+                        println("Saiu")
+                        delegate.logoffSuccessful()
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    println(t.message.toString())
+                    delegate.logoffFailed(t.message.toString())
                 }
 
             }

@@ -57,7 +57,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/outfit_regular"
                     tools:text="henrique.manso@gmail.com"
-                    android:textAlignment="center"
                     android:textColor="@color/gray_weak_text"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/entrar_tv" />
@@ -502,6 +501,19 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sair"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/custom_button_red"
+
+            android:text="Sair"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/outfit_semi_bold"
+            android:textAllCaps="false"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
