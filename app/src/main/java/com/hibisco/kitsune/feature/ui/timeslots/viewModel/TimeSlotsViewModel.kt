@@ -19,7 +19,8 @@ class TimeSlotsViewModel(val delegate: TimeSlotsDelegate) {
                           hour: Int,
                           minute: Int) {
         val dateTime = LocalDateTime.of(date.year, Month.of(date.month), date.day, hour, minute)
-        val appointment = AppointmentRequestDTO(dateTime, idHospital, idDonator)
+        println(dateTime.toString())
+        val appointment = AppointmentRequestDTO(dateTime.toString().replace("T", " ") + ":00", idDonator, idHospital)
 
         retrofit.createAppointment(appointment).enqueue(
             object : Callback<Void> {
